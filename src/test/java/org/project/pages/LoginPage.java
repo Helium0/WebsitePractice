@@ -13,12 +13,20 @@ public class LoginPage {
 
     @FindBy(id = "email")
     private WebElement emailField;
+    @FindBy(id = "email_create")
+    private WebElement emailCreate;
 
     @FindBy(id = "passwd")
     private WebElement passwordField;
 
     @FindBy(id = "SubmitLogin")
     private WebElement submitLoginButton;
+
+    @FindBy(xpath = "//a[text()='Forgot your password?']")
+    private WebElement forgotPasswordButton;
+
+    @FindBy(id = "SubmitCreate")
+    private WebElement createAnAccountButton;
 
 
     public LoginPage (WebDriver driver) {
@@ -40,5 +48,14 @@ public class LoginPage {
     public void clickSubmitLoginButton() {
         submitLoginButton.click();
     }
+    public void clickForgotPasswordButton() {
+        forgotPasswordButton.click();
+    }
 
+    public void clickCreateAnAccountButton() {
+        createAnAccountButton.click();
+    }
+    public void sendEmailAdressField(String email) {
+        emailCreate.sendKeys(email);
+    }
 }
