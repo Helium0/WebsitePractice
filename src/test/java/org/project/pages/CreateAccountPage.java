@@ -21,6 +21,10 @@ public class CreateAccountPage {
     private WebElement birthMonth;
     @FindBy(id = "years")
     private WebElement birthYear;
+    @FindBy(id = "newsletter")
+    private WebElement newsletterCheckbox;
+    @FindBy(id = "submitAccount")
+    private WebElement registerAccountButton;
 
 
     public CreateAccountPage(WebDriver driver) {
@@ -35,12 +39,12 @@ public class CreateAccountPage {
         customerFirstName.sendKeys(firstName);
     }
 
-    public void setCustomerLastName() {
-        customerLastName.sendKeys();
+    public void setCustomerLastName(String lastName) {
+        customerLastName.sendKeys(lastName);
     }
-
-
-
+    public void clickRegisterAccountButton() {
+        registerAccountButton.click();
+    }
     public WebElement dayOfBirth() {
         return birthDay;
     }
@@ -50,12 +54,12 @@ public class CreateAccountPage {
     public WebElement yearOfBirth() {
         return birthYear;
     }
-    public Select select(WebElement element) {
+    private Select select(WebElement element) {
         return new Select(element);
     }
 
     public void selectCustomerBirth(WebElement element, String value) {
-        select(element).getOptions().stream().filter(a->a.getText().equals(value)).forEach(a->a.click());
+        select(element).getOptions().stream().filter(a->a.getText().trim().contains(value)).forEach(a->a.click());
     }
 
 }
