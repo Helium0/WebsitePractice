@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CreateAccountPage {
 
@@ -25,6 +27,8 @@ public class CreateAccountPage {
     private WebElement newsletterCheckbox;
     @FindBy(id = "submitAccount")
     private WebElement registerAccountButton;
+    @FindBy(xpath = "//ol//li")
+    private List<WebElement> elementsError;
 
 
     public CreateAccountPage(WebDriver driver) {
@@ -61,5 +65,9 @@ public class CreateAccountPage {
     public void selectCustomerBirth(WebElement element, String value) {
         select(element).getOptions().stream().filter(a->a.getText().trim().contains(value)).forEach(a->a.click());
     }
+    public List<String> webElementsError() {
+        return elementsError.stream().map(a->a.getText()).collect(Collectors.toList());
+    }
+
 
 }
