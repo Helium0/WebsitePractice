@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CreateAccountPage {
+public class DefineCustomerDetailsPage {
 
 
     @FindBy(id = "id_gender1")
@@ -31,7 +31,7 @@ public class CreateAccountPage {
     private List<WebElement> elementsError;
 
 
-    public CreateAccountPage(WebDriver driver) {
+    public DefineCustomerDetailsPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
     }
 
