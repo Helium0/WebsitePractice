@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.project.BasePage;
 import org.project.helper.DataProv;
+import org.project.pages.DefineCustomerDetailsPage;
 import org.project.pages.LoginPage;
 import org.project.utilities.ReadProperties;
 import org.testng.Assert;
@@ -15,31 +16,50 @@ import java.io.IOException;
 public class LoginTests extends BasePage {
 
 
-    private ReadProperties readProperties = new ReadProperties(); // class for reading private credentials from separated file
+    private ReadProperties readProperties; // class for reading private credentials from separated file
+    private LoginPage loginPage;
+    private DefineCustomerDetailsPage defineCustomerDetailsPage;
 
     // Error texts from login page. Used for assertions.
     private final String EMAIL_REQUIRED = "An email address required.";
     private final String PASSWORD_REQUIRED = "Password is required.";
     private final String INVALID_DATA = "Authentication failed.";
+    private final String INVALID_EMAIL = "Invalid email address.";
+    private final String SUCCESSFULLY_LOGGED = "Welcome to your account. Here you can manage all of your personal information and orders.";
 
     /* I used provider class for learning purpose. With this class I can read the data from JSON file and pass
     throught it. This allow me to reduce another tests however I leave it like that.
      */
 
-    @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class,dependsOnMethods = "loginToAccountWithoutEmail")
+
+    @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class, dependsOnMethods = "loginToAccountWithoutEmail")
     public void loginsWithDataProvider(String data) {
-        LoginPage loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         loginPage.clickSignInButtonAtTheBeginning();
         String [] users = data.split(",");
         loginPage.provideEmail(users[0]);
         loginPage.providePassword(users[1]);
         loginPage.clickSubmitLoginButton();
 
+        if(defineCustomerDetailsPage.webElementsError().get(0).contains("address required")) {
+            Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), EMAIL_REQUIRED);
+        } else if (defineCustomerDetailsPage.webElementsError().get(0).contains("Password is")) {
+            Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), PASSWORD_REQUIRED);
+        } else if (defineCustomerDetailsPage.webElementsError().get(0).contains("Authentication")) {
+            Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), INVALID_DATA);
+        } else if (defineCustomerDetailsPage.webElementsError().get(0).contains("Invalid email")) {
+            Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), INVALID_EMAIL);
+        } else {
+            Assert.fail("Assertion failed");
+        }
+
     }
 
     @Test
     public void loginToAccountWithInvalidData() throws IOException {
-        LoginPage loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);
+        readProperties = new ReadProperties();
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.provideEmail(readProperties.readValue("wrongEmail"));
         loginPage.providePassword(readProperties.readValue("wrongPassword"));
@@ -52,7 +72,7 @@ public class LoginTests extends BasePage {
 
     @Test(dependsOnMethods = "loginToAccountWithInvalidData")
     public void loginToAccountWithoutData() {
-        LoginPage loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.clickSubmitLoginButton();
         WebElement element = driver.findElement(By.xpath("//li[text()='An email address required.']"));
@@ -63,7 +83,8 @@ public class LoginTests extends BasePage {
 
     @Test(dependsOnMethods = "loginToAccountWithoutData")
     public void loginToAccountWithoutPassword() throws IOException {
-        LoginPage loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);
+        readProperties = new ReadProperties();
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.provideEmail(readProperties.readValue("wrongEmail"));
         loginPage.clickSubmitLoginButton();
@@ -74,7 +95,8 @@ public class LoginTests extends BasePage {
 
     @Test(dependsOnMethods = "loginToAccountWithoutPassword")
     public void loginToAccountWithoutEmail() throws IOException {
-        LoginPage loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);
+        readProperties = new ReadProperties();
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.providePassword(readProperties.readValue("wrongPassword"));
         loginPage.clickSubmitLoginButton();
@@ -83,12 +105,19 @@ public class LoginTests extends BasePage {
         Assert.assertEquals(element.getText(),EMAIL_REQUIRED);
     }
 
-//    @Test
-//    public void loginToAccountWithCorrectData() throws InterruptedException {
-//        driver.findElement(By.xpath("//a[normalize-space()='Sign in']")).click();
-//        driver.findElement(By.id("passwd")).sendKeys("666tester");
-//        driver.findElement(By.id("SubmitLogin")).click();
-//        Thread.sleep(5000);
-//    }
+    @Test
+    public void loginToAccountWithCorrectData() throws IOException {
+        loginPage = new LoginPage(driver);
+        readProperties = new ReadProperties();
+        loginPage.clickSignInButtonAtTheBeginning();
+        loginPage.provideEmail(readProperties.readValue("validEmail"));
+        loginPage.providePassword(readProperties.readValue("validPassword"));
+        loginPage.clickSubmitLoginButton();
+        WebElement el = driver.findElement(By.xpath("//p[text()='Welcome to your account. Here you can manage all of your personal information and orders.']"));
+
+        Assert.assertEquals(el.getText(),SUCCESSFULLY_LOGGED);
+        loginPage.clickSignOutButton();
+
+    }
 
 }
