@@ -10,6 +10,8 @@ public class LoginPage {
 
     @FindBy(xpath = "//a[normalize-space()='Sign in']")
     private WebElement signInButton;
+    @FindBy(xpath = "//a[normalize-space()='Sign out']")
+    private WebElement signOutButton;
 
     @FindBy(id = "email")
     private WebElement emailField;
@@ -36,8 +38,12 @@ public class LoginPage {
     public void clickSignInButtonAtTheBeginning() {
         signInButton.click();
     }
+    public void clickSignOutButton() {
+        signOutButton.click();
+    }
 
     public void provideEmail(String email) {
+        emailField.clear();
         emailField.sendKeys(email);
     }
 
