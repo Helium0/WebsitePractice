@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.project.BasePage;
 import org.project.helper.DataProv;
+import org.project.helper.ProjectHelper;
+import org.project.pages.DefineCustomerDetailsPage;
 import org.project.pages.ForgotPasswordPage;
 import org.project.pages.LoginPage;
 import org.project.utilities.ReadProperties;
@@ -16,17 +18,23 @@ public class ForgotPasswordTests extends BasePage {
 
     private LoginPage loginPage;
     private ForgotPasswordPage forgotPasswordPage;
+    private DefineCustomerDetailsPage defineCustomerDetailsPage;
     private ReadProperties readProperties;
     private final String AUTHENTICATION_TEXT = "AUTHENTICATION";
-
+    private final String CONFIRMATION_EMAIL = "email has been sent";
+    private final String INVALID_EMAIL = "Invalid email address.";
+    private final String NO_ACCOUNT_REGISTERED_ON_THIS_EMAIL = "There is no account registered for this email address.";
 
     @Test
     public void forgotPasswordWithEmptyEmailField() {
         loginPage = new LoginPage(driver);
         forgotPasswordPage = new ForgotPasswordPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.clickForgotPasswordButton();
         forgotPasswordPage.clickOnRetrievePasswordButton();
+
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),INVALID_EMAIL);
 
     }
 
@@ -35,15 +43,27 @@ public class ForgotPasswordTests extends BasePage {
         loginPage = new LoginPage(driver);
         forgotPasswordPage = new ForgotPasswordPage(driver);
         readProperties = new ReadProperties();
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.clickForgotPasswordButton();
         loginPage.provideEmail(readProperties.readValue("wrongEmail"));
         forgotPasswordPage.clickOnRetrievePasswordButton();
 
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),NO_ACCOUNT_REGISTERED_ON_THIS_EMAIL);
     }
 
     @Test
-    public void forgotPasswordWithValidEmail() {
+    public void forgotPasswordWithValidEmail() throws IOException {
+        loginPage = new LoginPage(driver);
+        forgotPasswordPage = new ForgotPasswordPage(driver);
+        readProperties = new ReadProperties();
+        loginPage.clickSignInButtonAtTheBeginning();
+        loginPage.clickForgotPasswordButton();
+        loginPage.provideEmail(readProperties.readValue("validEmail"));
+        forgotPasswordPage.clickOnRetrievePasswordButton();
+        WebElement pp = driver.findElement(By.xpath("//p[contains(text(),'A confirmation email has been sent')]"));
+
+        Assert.assertTrue(pp.getText().contains(CONFIRMATION_EMAIL));
 
     }
 
@@ -64,11 +84,21 @@ public class ForgotPasswordTests extends BasePage {
     public void differentEmailsFromDataProvider(String data) {
         loginPage = new LoginPage(driver);
         forgotPasswordPage = new ForgotPasswordPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.clickForgotPasswordButton();
         String [] email = data.split(",");
         loginPage.provideEmail(email[0]);
         forgotPasswordPage.clickOnRetrievePasswordButton();
+
+        if (defineCustomerDetailsPage.webElementsError().get(0).contains("There is no account")) {
+            Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), NO_ACCOUNT_REGISTERED_ON_THIS_EMAIL);
+        } else if(defineCustomerDetailsPage.webElementsError().get(0).contains("Invalid email")) {
+            Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), INVALID_EMAIL);
+        } else {
+            Assert.fail("Assertion failed");
+
+        }
     }
 
 }
