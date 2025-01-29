@@ -19,9 +19,6 @@ public class ProjectHelper extends BasePage {
     private WebDriverWait webDriverWait() {
         return new WebDriverWait(driver,Duration.ofSeconds(10));
     }
-
-
-
     public void waitForElement(WebElement element) {
         webDriverWait().until(ExpectedConditions.elementToBeClickable(element));
     }
