@@ -23,8 +23,8 @@ public class DefineCustomerDetailsTests extends BasePage {
     private Customer customer;
     private Faker faker;
     private ProjectHelper projectHelper;
-    private final String LAST_NAME = "lastname is required.";
     private final String FIRST_NAME = "firstname is required.";
+    private final String LAST_NAME = "lastname is required.";
     private final String PASSWORD = "passwd is required.";
     private final String ACCOUNT_CREATED = "Your account has been created.";
     private final String ACCOUNT_ON_THIS_EMAIL_ALREADY_REGISTERED = "An account using this email address has already been registered.";
