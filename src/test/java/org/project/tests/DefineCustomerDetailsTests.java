@@ -19,7 +19,7 @@ public class DefineCustomerDetailsTests extends BasePage {
 
     private LoginPage loginPage;
     private ReadProperties readProperties;
-    private DefineCustomerDetailsPage createAccountPage;
+    private DefineCustomerDetailsPage defineCustomerDetailsPage;
     private Customer customer;
     private Faker faker;
     private ProjectHelper projectHelper;
@@ -31,30 +31,36 @@ public class DefineCustomerDetailsTests extends BasePage {
 
 
 
+    public String getFIRST_NAME() {  // returning class fields for use it in another tests
+        return FIRST_NAME;
+    }
+    public String getLAST_NAME() {
+        return LAST_NAME;
+    }
 
 
     @Test
     public void createAccountFillPersonalInformation() throws IOException, InterruptedException {
         loginPage = new LoginPage(driver);
-        createAccountPage = new DefineCustomerDetailsPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
         faker = new Faker();
         loginPage.clickSignInButtonAtTheBeginning();
         customer.setCustomerEmail(faker.internet().emailAddress());
         loginPage.sendEmailAdressField(customer.getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
-        createAccountPage.clickMaleRadioButton();
+        defineCustomerDetailsPage.clickMaleRadioButton();
         customer.setCustomerName(faker.name().name());
-        createAccountPage.setCustomerFirstName(customer.getCustomerName());
+        defineCustomerDetailsPage.setCustomerFirstName(customer.getCustomerName());
         customer.setCustomerLastName(faker.name().lastName());
-        createAccountPage.setCustomerLastName(customer.getCustomerLastName());
+        defineCustomerDetailsPage.setCustomerLastName(customer.getCustomerLastName());
         customer.setCustomerBirthday(customer.tab());
         customer.setCustomerPassword(faker.internet().password());
         loginPage.providePassword(customer.getCustomerPassword());
-        createAccountPage.selectCustomerBirth(createAccountPage.dayOfBirth(), customer.getCustomerBirthday()[2]);
-        createAccountPage.selectCustomerBirth(createAccountPage.monthOfBirth(), customer.getCustomerBirthday()[1]);
-        createAccountPage.selectCustomerBirth(createAccountPage.yearOfBirth(), customer.getCustomerBirthday()[5]);
-        createAccountPage.clickRegisterAccountButton();
+        defineCustomerDetailsPage.selectCustomerBirth(defineCustomerDetailsPage.dayOfBirth(), customer.getCustomerBirthday()[2]);
+        defineCustomerDetailsPage.selectCustomerBirth(defineCustomerDetailsPage.monthOfBirth(), customer.getCustomerBirthday()[1]);
+        defineCustomerDetailsPage.selectCustomerBirth(defineCustomerDetailsPage.yearOfBirth(), customer.getCustomerBirthday()[5]);
+        defineCustomerDetailsPage.clickRegisterAccountButton();
         WebElement el = driver.findElement(By.xpath("//p[normalize-space()='Your account has been created.']"));
 
 
@@ -68,22 +74,22 @@ public class DefineCustomerDetailsTests extends BasePage {
     @Test
     public void createAccountFillPersonalInformationWithoutDateBirth() {
         loginPage = new LoginPage(driver);
-        createAccountPage = new DefineCustomerDetailsPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
         faker = new Faker();
         loginPage.clickSignInButtonAtTheBeginning();
         customer.setCustomerEmail(faker.internet().emailAddress());
         loginPage.sendEmailAdressField(customer.getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
-        createAccountPage.clickMaleRadioButton();
+        defineCustomerDetailsPage.clickMaleRadioButton();
         customer.setCustomerName(faker.name().name());
-        createAccountPage.setCustomerFirstName(customer.getCustomerName());
+        defineCustomerDetailsPage.setCustomerFirstName(customer.getCustomerName());
         customer.setCustomerLastName(faker.name().lastName());
-        createAccountPage.setCustomerLastName(customer.getCustomerLastName());
+        defineCustomerDetailsPage.setCustomerLastName(customer.getCustomerLastName());
         customer.setCustomerBirthday(customer.tab());
         customer.setCustomerPassword(faker.internet().password());
         loginPage.providePassword(customer.getCustomerPassword());
-        createAccountPage.clickRegisterAccountButton();
+        defineCustomerDetailsPage.clickRegisterAccountButton();
         WebElement el = driver.findElement(By.xpath("//p[normalize-space()='Your account has been created.']"));
 
         Assert.assertEquals(el.getText(),ACCOUNT_CREATED);
@@ -94,7 +100,7 @@ public class DefineCustomerDetailsTests extends BasePage {
     @Test
     public void createAccountWithoutAnyPersonalInformation() {
         loginPage = new LoginPage(driver);
-        createAccountPage = new DefineCustomerDetailsPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
         faker = new Faker();
         projectHelper = new ProjectHelper();
@@ -102,12 +108,12 @@ public class DefineCustomerDetailsTests extends BasePage {
         customer.setCustomerEmail(faker.internet().emailAddress());
         loginPage.sendEmailAdressField(customer.getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
-        createAccountPage.clickRegisterAccountButton();
+        defineCustomerDetailsPage.clickRegisterAccountButton();
 
         projectHelper.softAssert();
-        projectHelper.softAssert().assertEquals(createAccountPage.webElementsError().get(0),LAST_NAME);
-        projectHelper.softAssert().assertEquals(createAccountPage.webElementsError().get(1),FIRST_NAME);
-        projectHelper.softAssert().assertEquals(createAccountPage.webElementsError().get(2),PASSWORD);
+        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(0),LAST_NAME);
+        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(1),FIRST_NAME);
+        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(2),PASSWORD);
         projectHelper.softAssert().assertAll();
 
     }
@@ -115,7 +121,7 @@ public class DefineCustomerDetailsTests extends BasePage {
     @Test
     public void createAccountWithoutPassword() throws InterruptedException {
         loginPage = new LoginPage(driver);
-        createAccountPage = new DefineCustomerDetailsPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
         faker = new Faker();
         projectHelper = new ProjectHelper();
@@ -123,21 +129,21 @@ public class DefineCustomerDetailsTests extends BasePage {
         customer.setCustomerEmail(faker.internet().emailAddress());
         loginPage.sendEmailAdressField(customer.getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
-        createAccountPage.clickMaleRadioButton();
+        defineCustomerDetailsPage.clickMaleRadioButton();
         customer.setCustomerName(faker.name().name());
-        createAccountPage.setCustomerFirstName(customer.getCustomerName());
+        defineCustomerDetailsPage.setCustomerFirstName(customer.getCustomerName());
         customer.setCustomerLastName(faker.name().lastName());
-        createAccountPage.setCustomerLastName(customer.getCustomerLastName());
-        createAccountPage.clickRegisterAccountButton();
+        defineCustomerDetailsPage.setCustomerLastName(customer.getCustomerLastName());
+        defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        Assert.assertEquals(createAccountPage.webElementsError().get(0),PASSWORD);
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),PASSWORD);
 
     }
 
     @Test
     public void createAccountWithoutFirstName() {
         loginPage = new LoginPage(driver);
-        createAccountPage = new DefineCustomerDetailsPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
         faker = new Faker();
         projectHelper = new ProjectHelper();
@@ -145,20 +151,20 @@ public class DefineCustomerDetailsTests extends BasePage {
         customer.setCustomerEmail(faker.internet().emailAddress());
         loginPage.sendEmailAdressField(customer.getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
-        createAccountPage.clickMaleRadioButton();
+        defineCustomerDetailsPage.clickMaleRadioButton();
         customer.setCustomerLastName(faker.name().lastName());
-        createAccountPage.setCustomerLastName(customer.getCustomerLastName());
+        defineCustomerDetailsPage.setCustomerLastName(customer.getCustomerLastName());
         customer.setCustomerPassword(faker.internet().password());
         loginPage.providePassword(customer.getCustomerPassword());
-        createAccountPage.clickRegisterAccountButton();
+        defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        Assert.assertEquals(createAccountPage.webElementsError().get(0),FIRST_NAME);
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),FIRST_NAME);
     }
 
     @Test
     public void createAccountWithoutLastName() {
         loginPage = new LoginPage(driver);
-        createAccountPage = new DefineCustomerDetailsPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
         faker = new Faker();
         projectHelper = new ProjectHelper();
@@ -166,20 +172,20 @@ public class DefineCustomerDetailsTests extends BasePage {
         customer.setCustomerEmail(faker.internet().emailAddress());
         loginPage.sendEmailAdressField(customer.getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
-        createAccountPage.clickMaleRadioButton();
+        defineCustomerDetailsPage.clickMaleRadioButton();
         customer.setCustomerName(faker.name().name());
-        createAccountPage.setCustomerFirstName(customer.getCustomerName());
+        defineCustomerDetailsPage.setCustomerFirstName(customer.getCustomerName());
         customer.setCustomerPassword(faker.internet().password());
         loginPage.providePassword(customer.getCustomerPassword());
-        createAccountPage.clickRegisterAccountButton();
+        defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        Assert.assertEquals(createAccountPage.webElementsError().get(0),LAST_NAME);
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),LAST_NAME);
     }
 
     @Test
     public void createAccountWithoutFirstNameAndLastName() {
         loginPage = new LoginPage(driver);
-        createAccountPage = new DefineCustomerDetailsPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
         faker = new Faker();
         projectHelper = new ProjectHelper();
@@ -187,20 +193,20 @@ public class DefineCustomerDetailsTests extends BasePage {
         customer.setCustomerEmail(faker.internet().emailAddress());
         loginPage.sendEmailAdressField(customer.getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
-        createAccountPage.clickMaleRadioButton();
+        defineCustomerDetailsPage.clickMaleRadioButton();
         customer.setCustomerPassword(faker.internet().password());
         loginPage.providePassword(customer.getCustomerPassword());
-        createAccountPage.clickRegisterAccountButton();
+        defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        projectHelper.softAssert().assertEquals(createAccountPage.webElementsError().get(0),FIRST_NAME);
-        projectHelper.softAssert().assertEquals(createAccountPage.webElementsError().get(1),LAST_NAME);
+        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(0),FIRST_NAME);
+        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(1),LAST_NAME);
         projectHelper.softAssert().assertAll();
     }
 
     @Test
     public void createAccountWithoutFirstNameAndPassword() {
         loginPage = new LoginPage(driver);
-        createAccountPage = new DefineCustomerDetailsPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
         faker = new Faker();
         projectHelper = new ProjectHelper();
@@ -208,20 +214,20 @@ public class DefineCustomerDetailsTests extends BasePage {
         customer.setCustomerEmail(faker.internet().emailAddress());
         loginPage.sendEmailAdressField(customer.getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
-        createAccountPage.clickMaleRadioButton();
+        defineCustomerDetailsPage.clickMaleRadioButton();
         customer.setCustomerLastName(faker.name().lastName());
-        createAccountPage.setCustomerLastName(customer.getCustomerLastName());
-        createAccountPage.clickRegisterAccountButton();
+        defineCustomerDetailsPage.setCustomerLastName(customer.getCustomerLastName());
+        defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        projectHelper.softAssert().assertEquals(createAccountPage.webElementsError().get(0),FIRST_NAME);
-        projectHelper.softAssert().assertEquals(createAccountPage.webElementsError().get(1),PASSWORD);
+        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(0),FIRST_NAME);
+        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(1),PASSWORD);
         projectHelper.softAssert().assertAll();
     }
 
     @Test
     public void createAccountWithExistedEmail() throws IOException {
         loginPage = new LoginPage(driver);
-        createAccountPage = new DefineCustomerDetailsPage(driver);
+        defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
         faker = new Faker();
         projectHelper = new ProjectHelper();
@@ -230,17 +236,17 @@ public class DefineCustomerDetailsTests extends BasePage {
         customer.setCustomerEmail(faker.internet().emailAddress());
         loginPage.sendEmailAdressField(customer.getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
-        createAccountPage.clickMaleRadioButton();
+        defineCustomerDetailsPage.clickMaleRadioButton();
         customer.setCustomerName(faker.name().name());
-        createAccountPage.setCustomerFirstName(customer.getCustomerName());
+        defineCustomerDetailsPage.setCustomerFirstName(customer.getCustomerName());
         customer.setCustomerLastName(faker.name().lastName());
-        createAccountPage.setCustomerLastName(customer.getCustomerLastName());
+        defineCustomerDetailsPage.setCustomerLastName(customer.getCustomerLastName());
         loginPage.provideEmail(readProperties.readValue("validEmail"));
         customer.setCustomerPassword(faker.internet().password());
         loginPage.providePassword(customer.getCustomerPassword());
-        createAccountPage.clickRegisterAccountButton();
+        defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        Assert.assertEquals(createAccountPage.webElementsError().get(0),ACCOUNT_ON_THIS_EMAIL_ALREADY_REGISTERED);
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),ACCOUNT_ON_THIS_EMAIL_ALREADY_REGISTERED);
 
     }
 
