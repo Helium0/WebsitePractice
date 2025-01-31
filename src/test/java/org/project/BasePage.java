@@ -16,6 +16,7 @@ public class BasePage extends WebDriverFactory {
         driver.manage().window().maximize();
     }
 
+
     @AfterTest
     public void tearDown() {
         driver.quit();
