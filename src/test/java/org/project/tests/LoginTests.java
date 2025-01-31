@@ -32,6 +32,10 @@ public class LoginTests extends BasePage {
      */
 
 
+    public String getSUCCESSFULLY_LOGGED() {    // returning class field for use it in another tests
+        return SUCCESSFULLY_LOGGED;
+    }
+
     @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class, dependsOnMethods = "loginToAccountWithoutEmail")
     public void loginsWithDataProvider(String data) {
         loginPage = new LoginPage(driver);
