@@ -40,7 +40,7 @@ public class DefineCustomerDetailsTests extends BasePage {
 
 
     @Test
-    public void createAccountFillPersonalInformation() throws IOException, InterruptedException {
+    public void createAccountFillPersonalInformation() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
@@ -110,7 +110,6 @@ public class DefineCustomerDetailsTests extends BasePage {
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        projectHelper.softAssert();
         projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(0),LAST_NAME);
         projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(1),FIRST_NAME);
         projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(2),PASSWORD);
@@ -119,7 +118,7 @@ public class DefineCustomerDetailsTests extends BasePage {
     }
 
     @Test
-    public void createAccountWithoutPassword() throws InterruptedException {
+    public void createAccountWithoutPassword() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customer = new Customer();
