@@ -3,12 +3,13 @@ package org.project.helper;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.project.BasePage;
 import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
-
+import java.util.stream.Stream;
 
 
 public class ProjectHelper extends BasePage {
@@ -24,6 +25,9 @@ public class ProjectHelper extends BasePage {
     }
     public SoftAssert softAssert() {
         return new SoftAssert();
+    }
+    public Select select(WebElement element) {
+        return new Select(element);
     }
 
 
