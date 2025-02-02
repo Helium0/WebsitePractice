@@ -35,6 +35,9 @@ public class LoginTests extends BasePage {
     public String getSUCCESSFULLY_LOGGED() {    // returning class field for use it in another tests
         return SUCCESSFULLY_LOGGED;
     }
+    public String getINVALID_EMAIL() {
+        return INVALID_EMAIL;
+    }
 
     @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class, dependsOnMethods = "loginToAccountWithoutEmail")
     public void loginsWithDataProvider(String data) {
