@@ -9,7 +9,37 @@ public class Customer {
     private String customerEmail;
     private String customerPassword;
     private String[] customerBirthday;
+    private String customerAddress;
+    private String customerCity;
+    private String customerPostalCode;
+    private String customerMobilePhone;
 
+
+
+    public void setCustomerAddress(String customerAddress) {
+        this.customerAddress = customerAddress;
+    }
+    public String getCustomerAddress() {
+        return customerAddress;
+    }
+    public void setCustomerCity(String customerCity) {
+        this.customerCity = customerCity;
+    }
+    public String getCustomerCity() {
+        return customerCity;
+    }
+    public void setCustomerPostalCode(String customerPostalCode) {
+        this.customerPostalCode = customerPostalCode;
+    }
+    public String getCustomerPostalCode() {
+        return customerPostalCode;
+    }
+    public void setCustomerMobilePhone(String customerMobilePhone) {
+        this.customerMobilePhone = customerMobilePhone;
+    }
+    public String getCustomerMobilePhone() {
+        return customerMobilePhone;
+    }
 
 
     public void setCustomerName(String customerName) {
