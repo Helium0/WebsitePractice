@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.project.helper.Customer;
 
 public class DefineCustomerAdressPage {
@@ -27,7 +26,13 @@ public class DefineCustomerAdressPage {
     @FindBy(id = "submitAddress")
     private WebElement saveAddressButton;
     @FindBy(id = "id_state")
-    private Select selectCustomerState;
+    private WebElement selectCustomerState;
+    @FindBy(id = "submitAddress")
+    private WebElement saveCustomerAddressButton;
+    @FindBy(xpath = "//span[text()='My addresses']")
+    private WebElement customerAddressesButton;
+    @FindBy(xpath = "//span[text()='Delete']")
+    private WebElement deleteCustomerAddressButton;
 
     private Faker faker;
     private Customer customer;
@@ -36,13 +41,16 @@ public class DefineCustomerAdressPage {
     public DefineCustomerAdressPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
+
     public void clickOnAddCustomerFirstAddress() {
         customerFirstAdressButton.click();
     }
+
     public void assignCustomerAddressInput(String address) {
         customerAssignAddress.clear();
         customerAssignAddress.sendKeys(address);
     }
+
     public void clickOnSaveAddressButton() {
         saveAddressButton.click();
     }
@@ -63,6 +71,7 @@ public class DefineCustomerAdressPage {
         customer.setCustomerMobilePhone(faker.phoneNumber().cellPhone());
         return customer;
     }
+
     private String customerZipCode() {
         faker = new Faker();
         String zip = faker.address().zipCode();
@@ -70,6 +79,22 @@ public class DefineCustomerAdressPage {
              zip = faker.address().zipCode().substring(0,5);
         }
         return  zip;
+    }
+
+    public WebElement customerState() {
+        return selectCustomerState;
+    }
+
+    public void clickOnSaveCustomerAddressButton() {
+        saveAddressButton.click();
+    }
+
+    public void clickOnCustomerAddressesButton() {
+        customerAddressesButton.click();
+    }
+
+    public void clickDeleteCustomerAddressesButton() {
+        deleteCustomerAddressButton.click();
     }
 
 
