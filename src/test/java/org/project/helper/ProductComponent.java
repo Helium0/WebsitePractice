@@ -22,6 +22,9 @@ public class ProductComponent extends BaseComponent {
         return root.findElement(PRODUCT_PRICE).getText();
     }
 
+    public void getProduct() {
+         root.findElement(PRODUCT).click();
+    }
 
 
 

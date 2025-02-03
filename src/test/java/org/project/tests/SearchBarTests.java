@@ -15,6 +15,11 @@ public class SearchBarTests extends BasePage {
     private final String PRINTED_DRESS = "Printed Summer Dress";
 
 
+    public String getPRINTED_DRESS() {
+        return PRINTED_DRESS;
+    }
+
+
     @Test
     public void searchBarExactMatch() {
         searchBarPage = new SearchBarPage(driver);
