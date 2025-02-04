@@ -1,11 +1,11 @@
 package org.project.pages;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.project.helper.Customer;
+
 
 public class DefineCustomerAdressPage {
 
@@ -14,9 +14,9 @@ public class DefineCustomerAdressPage {
     @FindBy(id = "city")
     private WebElement customerCityInput;
     @FindBy(id = "postcode")
-    private WebElement customerPostalCode;
+    private WebElement customerPostalCodeInput;
     @FindBy(id = "phone_mobile")
-    private WebElement customerMobilePhone;
+    private WebElement customerMobilePhoneInput;
     @FindBy(name = "alias")
     private WebElement assignCustomerAddressInput;
     @FindBy(xpath = "//span[text()='Add my first address']")
@@ -34,13 +34,13 @@ public class DefineCustomerAdressPage {
     @FindBy(xpath = "//span[text()='Delete']")
     private WebElement deleteCustomerAddressButton;
 
-    private Faker faker;
-    private Customer customer;
+
 
 
     public DefineCustomerAdressPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
+
 
     public void clickOnAddCustomerFirstAddress() {
         customerFirstAdressButton.click();
@@ -49,36 +49,6 @@ public class DefineCustomerAdressPage {
     public void assignCustomerAddressInput(String address) {
         customerAssignAddress.clear();
         customerAssignAddress.sendKeys(address);
-    }
-
-    public void clickOnSaveAddressButton() {
-        saveAddressButton.click();
-    }
-
-    public void fillCustomerAddress() {
-         customerAddressInput.sendKeys(setCustomerAddress().getCustomerAddress());
-         customerCityInput.sendKeys(setCustomerAddress().getCustomerCity());
-         customerPostalCode.sendKeys(setCustomerAddress().getCustomerPostalCode());
-         customerMobilePhone.sendKeys(setCustomerAddress().getCustomerMobilePhone());
-    }
-
-    private Customer setCustomerAddress() {
-        customer = new Customer();
-        faker = new Faker();
-        customer.setCustomerAddress(faker.address().streetAddress());
-        customer.setCustomerCity(faker.address().cityName());
-        customer.setCustomerPostalCode(customerZipCode());
-        customer.setCustomerMobilePhone(faker.phoneNumber().cellPhone());
-        return customer;
-    }
-
-    private String customerZipCode() {
-        faker = new Faker();
-        String zip = faker.address().zipCode();
-        if(faker.address().zipCode().length() >= 5) {
-             zip = faker.address().zipCode().substring(0,5);
-        }
-        return  zip;
     }
 
     public WebElement customerState() {
@@ -95,6 +65,31 @@ public class DefineCustomerAdressPage {
 
     public void clickDeleteCustomerAddressesButton() {
         deleteCustomerAddressButton.click();
+    }
+
+    public void fillCustomerFullAddress(Customer.CustomerBuilder customerBuilder) {
+         customerAddressInput.sendKeys(customerBuilder.getCustomerAddress());
+         customerCityInput.sendKeys(customerBuilder.getCustomerCity());
+         customerPostalCodeInput.sendKeys(customerBuilder.getCustomerPostalCode());
+         customerMobilePhoneInput.sendKeys(customerBuilder.getCustomerMobilePhone());
+    }
+
+    public void fillCustomerAddressWithoutCity(Customer.CustomerBuilder customerBuilder) {
+        customerAddressInput.sendKeys(customerBuilder.getCustomerAddress());
+        customerPostalCodeInput.sendKeys(customerBuilder.getCustomerPostalCode());
+        customerMobilePhoneInput.sendKeys(customerBuilder.getCustomerMobilePhone());
+    }
+
+    public void fillCustomerAddressWithoutPostalCode(Customer.CustomerBuilder customerBuilder) {
+        customerAddressInput.sendKeys(customerBuilder.getCustomerAddress());
+        customerCityInput.sendKeys(customerBuilder.getCustomerCity());
+        customerMobilePhoneInput.sendKeys(customerBuilder.getCustomerMobilePhone());
+    }
+
+    public void fillCustomerAddressWithoutMobilePhone(Customer.CustomerBuilder customerBuilder) {
+        customerAddressInput.sendKeys(customerBuilder.getCustomerAddress());
+        customerCityInput.sendKeys(customerBuilder.getCustomerCity());
+        customerPostalCodeInput.sendKeys(customerBuilder.getCustomerPostalCode());
     }
 
 

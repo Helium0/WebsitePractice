@@ -19,6 +19,10 @@ public class SearchBarTests extends BasePage {
         return PRINTED_DRESS;
     }
 
+    public String getFADED_DRESS() {
+        return FADED_DRESS;
+    }
+
 
     @Test
     public void searchBarExactMatch() {

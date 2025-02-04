@@ -7,9 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.project.BasePage;
 import org.testng.asserts.SoftAssert;
-
 import java.time.Duration;
-import java.util.stream.Stream;
 
 
 public class ProjectHelper extends BasePage {
