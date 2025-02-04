@@ -13,8 +13,6 @@ import java.time.Duration;
 public class ProjectHelper extends BasePage {
 
 
-
-
     private WebDriverWait webDriverWait() {
         return new WebDriverWait(driver,Duration.ofSeconds(10));
     }
