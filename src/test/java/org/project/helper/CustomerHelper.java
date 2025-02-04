@@ -23,7 +23,7 @@ public class CustomerHelper {
     public Customer.CustomerBuilder customerObject() {
         Customer.CustomerBuilder customerBuilder = new Customer.CustomerBuilder()
                 .setCustomerName(fakerMethod().name().firstName());
-        customerBuilder.setCustomerName(fakerMethod().name().lastName());
+        customerBuilder.setCustomerLastName(fakerMethod().name().lastName());
         customerBuilder.setCustomerEmail(fakerMethod().internet().emailAddress());
         customerBuilder.setCustomerPassword(fakerMethod().internet().password());
         customerBuilder.setCustomerBirthday(date().split(" "));

@@ -15,7 +15,7 @@ public class Customer {
 
 
 
-    private Customer(CustomerBuilder builder) {
+    public Customer(CustomerBuilder builder) {
         this.customerName = builder.customerName;
         this.customerLastName = builder.customerLastName;
         this.customerEmail = builder.customerEmail;
