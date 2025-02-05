@@ -5,68 +5,89 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.project.BasePage;
 import org.project.helper.ProductComponent;
+import org.project.helper.ProjectHelper;
+import org.project.pages.CartPage;
 import org.project.pages.SearchBarPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.List;
 
 public class CartTests extends BasePage {
 
     private SearchBarPage searchBarPage;
     private SearchBarTests searchBarTests;
+    private CartPage cartPage;
+    private ProjectHelper projectHelper;
+
+    private final String PRODUCT_SIZE = "M";
+    private final String PRODUCT_COLOR = "Orange";
+    private final String PRODUCT_NAME_ATTRIBUTE = "name";
 
 
 
     @Test
-    public void ttt() throws InterruptedException {
+    public void addProductToTheCart() {
+        cartPage = new CartPage(driver);
         searchBarPage = new SearchBarPage(driver);
         searchBarTests = new SearchBarTests();
+        projectHelper = new ProjectHelper();
         searchBarPage.setSearchBarInput(searchBarTests.getPRINTED_DRESS());
         searchBarPage.searchBarClick();
-        ProductComponent product = searchBarPage.getDisplayedProduct(a -> a.getProductName().equals(searchBarTests.getPRINTED_DRESS()));
+        ProductComponent product = searchBarPage.getDisplayedProduct(a -> a.getProductName()
+                .equals(searchBarTests.getPRINTED_DRESS()));
         product.getProduct();
-        WebElement element = driver.findElement(By.id("group_1"));
-        Select select = new Select(element);
-        select.getOptions().stream().filter(a -> a.getText().equals("M")).forEach(a -> a.click());
-        List<WebElement> colors = driver.findElements(By.xpath("//ul[@id='color_to_pick_list']//a"));
-        colors.stream().filter(a -> a.getDomAttribute("name").equals("Orange")).forEach(a -> a.click());
-        driver.findElement(By.xpath("//span[text()='Add to cart']")).click();
+        projectHelper.streamMethod(cartPage.productSizeElements()).stream()
+                .filter(a -> a.getText().equals(PRODUCT_SIZE)).forEach(a -> a.click());
+        cartPage.productColorsElements().stream()
+                .filter(a -> a.getDomAttribute(PRODUCT_NAME_ATTRIBUTE).equals(PRODUCT_COLOR))
+                .forEach(a -> a.click());
+        cartPage.clickOnAddProductToCartButton().click();
+        cartPage.clickOnProceedToCheckoutButton();
 
-        Thread.sleep(4000);
+        WebElement el = driver.findElement(By.xpath("//td[text()='$29']"));
+        Assert.assertEquals(el.getText(), "$29");
+
     }
 
     @Test
-    public void eee() throws InterruptedException {
+    public void changeProductQuantityAndAddToTheCart() {
+        cartPage = new CartPage(driver);
         searchBarPage = new SearchBarPage(driver);
         searchBarTests = new SearchBarTests();
+        projectHelper = new ProjectHelper();
         searchBarPage.setSearchBarInput(searchBarTests.getPRINTED_DRESS());
         searchBarPage.searchBarClick();
-        ProductComponent product = searchBarPage.getDisplayedProduct(a -> a.getProductName().equals(searchBarTests.getFADED_DRESS()));
+        ProductComponent product = searchBarPage.getDisplayedProduct(a -> a.getProductName()
+                .equals(searchBarTests.getPRINTED_DRESS()));
         product.getProduct();
-        List<WebElement> colors = driver.findElements(By.xpath("//ul[@id='color_to_pick_list']//a"));
-        colors.stream().filter(a -> a.getDomAttribute("name").equals("Orange")).forEach(a -> a.click());
-//        driver.findElement(By.xpath("//span[text()='Add to cart']")).click();
-        WebElement y = driver.findElement(By.id("quantity_wanted"));
-        y.clear();
-        y.sendKeys("5");
-        Thread.sleep(4000);
+        projectHelper.waitForElement(cartPage.clickOnAddProductToCartButton());
+        projectHelper.streamMethod(cartPage.productSizeElements()).stream()
+                .filter(a -> a.getText().equals(PRODUCT_SIZE)).forEach(a -> a.click());
+        cartPage.productColorsElements().stream();
+        cartPage.clickToAddMoreQuantityButton("2");
+        cartPage.clickOnAddProductToCartButton().click();
+        cartPage.clickOnProceedToCheckoutButton();
+
+        WebElement el = driver.findElement(By.xpath("//td[text()='$58']"));
+        Assert.assertEquals(el.getText(), "$58");
+
     }
 
     @Test
-    public void qqq() throws InterruptedException {
+    public void changeProductQuantityByButtonAndAddToTheCart() {
+        cartPage = new CartPage(driver);
         searchBarPage = new SearchBarPage(driver);
         searchBarTests = new SearchBarTests();
-        searchBarPage.setSearchBarInput(searchBarTests.getFADED_DRESS());
+        projectHelper = new ProjectHelper();
+        searchBarPage.setSearchBarInput(searchBarTests.getPRINTED_DRESS());
         searchBarPage.searchBarClick();
-        ProductComponent product = searchBarPage.getDisplayedProduct(a -> a.getProductName().equals(searchBarTests.getFADED_DRESS()));
-//        Thread.sleep(4000);
+        ProductComponent product = searchBarPage.getDisplayedProduct(a -> a.getProductName()
+                .equals(searchBarTests.getPRINTED_DRESS()));
         product.getProduct();
-        WebElement element = driver.findElement(By.id("group_1"));
-        Select select = new Select(element);
-        select.getOptions().stream().filter(a -> a.getText().equals("L")).forEach(a -> a.click());
-        List<WebElement> colors = driver.findElements(By.xpath("//ul[@id='color_to_pick_list']//a"));
-        colors.stream().filter(a -> a.getDomAttribute("name").equals("Orange")).forEach(a -> a.click());
-//        driver.findElement(By.xpath("//span[text()='Add to cart']")).click();
+        projectHelper.waitForElement(cartPage.clickOnAddProductToCartButton());
+        projectHelper.streamMethod(cartPage.productSizeElements()).stream()
+                .filter(a -> a.getText().equals(PRODUCT_SIZE)).forEach(a -> a.click());
+        cartPage.productColorsElements().stream();
         WebElement y = driver.findElement(By.id("quantity_wanted"));
         int o = Integer.parseInt(y.getDomAttribute("value"));
 
@@ -78,7 +99,6 @@ public class CartTests extends BasePage {
 
         }
 
-        Thread.sleep(4000);
     }
 
 }
