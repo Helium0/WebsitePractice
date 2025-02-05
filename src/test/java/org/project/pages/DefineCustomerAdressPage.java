@@ -74,6 +74,12 @@ public class DefineCustomerAdressPage {
          customerMobilePhoneInput.sendKeys(customerBuilder.getCustomerMobilePhone());
     }
 
+    public void fillCustomerWithoutAddress(Customer.CustomerBuilder customerBuilder) {
+        customerCityInput.sendKeys(customerBuilder.getCustomerCity());
+        customerPostalCodeInput.sendKeys(customerBuilder.getCustomerPostalCode());
+        customerMobilePhoneInput.sendKeys(customerBuilder.getCustomerMobilePhone());
+    }
+
     public void fillCustomerAddressWithoutCity(Customer.CustomerBuilder customerBuilder) {
         customerAddressInput.sendKeys(customerBuilder.getCustomerAddress());
         customerPostalCodeInput.sendKeys(customerBuilder.getCustomerPostalCode());
