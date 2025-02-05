@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.project.BasePage;
 import org.project.helper.CustomerHelper;
-import org.project.helper.ProjectHelper;
 import org.project.pages.DefineCustomerDetailsPage;
 import org.project.pages.LoginPage;
 import org.project.utilities.ReadProperties;
@@ -20,7 +19,6 @@ public class DefineCustomerDetailsTests extends BasePage {
     private ReadProperties readProperties;
     private DefineCustomerDetailsPage defineCustomerDetailsPage;
     private CustomerHelper customerHelper;
-    private ProjectHelper projectHelper;
     private final String FIRST_NAME = "firstname is required.";
     private final String LAST_NAME = "lastname is required.";
     private final String PASSWORD = "passwd is required.";
@@ -87,16 +85,14 @@ public class DefineCustomerDetailsTests extends BasePage {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customerHelper = new CustomerHelper();
-        projectHelper = new ProjectHelper();
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(0),LAST_NAME);
-        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(1),FIRST_NAME);
-        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(2),PASSWORD);
-        projectHelper.softAssert().assertAll();
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),LAST_NAME);
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(1),FIRST_NAME);
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(2),PASSWORD);
 
     }
 
@@ -105,7 +101,6 @@ public class DefineCustomerDetailsTests extends BasePage {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customerHelper = new CustomerHelper();
-        projectHelper = new ProjectHelper();
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
@@ -123,7 +118,6 @@ public class DefineCustomerDetailsTests extends BasePage {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customerHelper = new CustomerHelper();
-        projectHelper = new ProjectHelper();
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
@@ -140,7 +134,6 @@ public class DefineCustomerDetailsTests extends BasePage {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customerHelper = new CustomerHelper();
-        projectHelper = new ProjectHelper();
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
@@ -157,7 +150,6 @@ public class DefineCustomerDetailsTests extends BasePage {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customerHelper = new CustomerHelper();
-        projectHelper = new ProjectHelper();
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
@@ -165,9 +157,9 @@ public class DefineCustomerDetailsTests extends BasePage {
         loginPage.providePassword(customerHelper.customerObject().getCustomerPassword());
         defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(0),FIRST_NAME);
-        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(1),LAST_NAME);
-        projectHelper.softAssert().assertAll();
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),LAST_NAME);
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(1),FIRST_NAME);
+
     }
 
     @Test
@@ -175,7 +167,6 @@ public class DefineCustomerDetailsTests extends BasePage {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customerHelper = new CustomerHelper();
-        projectHelper = new ProjectHelper();
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
@@ -183,9 +174,9 @@ public class DefineCustomerDetailsTests extends BasePage {
         defineCustomerDetailsPage.setCustomerLastName(customerHelper.customerObject().getCustomerEmail());
         defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(0),FIRST_NAME);
-        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(1),PASSWORD);
-        projectHelper.softAssert().assertAll();
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),FIRST_NAME);
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(1),PASSWORD);
+
     }
 
     @Test
@@ -193,7 +184,6 @@ public class DefineCustomerDetailsTests extends BasePage {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         customerHelper = new CustomerHelper();
-        projectHelper = new ProjectHelper();
         readProperties = new ReadProperties();
         loginPage.clickSignInButtonAtTheBeginning();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());

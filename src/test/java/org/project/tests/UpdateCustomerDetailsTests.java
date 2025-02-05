@@ -3,7 +3,6 @@ package org.project.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.project.BasePage;
-import org.project.helper.ProjectHelper;
 import org.project.pages.DefineCustomerDetailsPage;
 import org.project.pages.LoginPage;
 import org.project.pages.NavigationBarPage;
@@ -19,7 +18,6 @@ public class UpdateCustomerDetailsTests extends BasePage {
     private LoginPage loginPage;
     private LoginTests loginTests;
     private ReadProperties readProperties;
-    private ProjectHelper projectHelper;
     private NavigationBarPage navigationBarPage;
     private UpdateCustomerDetailsPage updateCustomerDetailsPage;
     private DefineCustomerDetailsPage defineCustomerDetailsPage;
@@ -130,11 +128,10 @@ public class UpdateCustomerDetailsTests extends BasePage {
     }
 
     @Test
-    public void updateCustomerDetailsWhenClearedFirstNameAndLastName() throws IOException {
+    public void updateCustomerDetailsWhenClearedFirstNameAndLastName() throws IOException, InterruptedException {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
         updateCustomerDetailsPage = new UpdateCustomerDetailsPage(driver);
-        projectHelper = new ProjectHelper();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         defineCustomerDetailsTests = new DefineCustomerDetailsTests();
         readProperties = new ReadProperties();
@@ -148,9 +145,9 @@ public class UpdateCustomerDetailsTests extends BasePage {
         updateCustomerDetailsPage.provideCustomerOldPassword(readProperties.readValue("validPassword"));
         updateCustomerDetailsPage.clickOnSaveButton();
 
-        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(0),defineCustomerDetailsTests.getFIRST_NAME());
-        projectHelper.softAssert().assertEquals(defineCustomerDetailsPage.webElementsError().get(1),defineCustomerDetailsTests.getLAST_NAME());
-        projectHelper.softAssert().assertAll();
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),defineCustomerDetailsTests.getLAST_NAME());
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(1),defineCustomerDetailsTests.getFIRST_NAME());
+
         navigationBarPage.signOutFromNavigationBar();
 
     }
