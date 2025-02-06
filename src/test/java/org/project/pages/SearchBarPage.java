@@ -24,6 +24,11 @@ public class SearchBarPage extends BasePage {
     @FindBy(xpath = "//div[@class='product-container']")
     private List<WebElement> productsList;
 
+
+    public WebElement getSearchBarInput() {
+        return searchBarInput;
+    }
+
     public SearchBarPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -33,6 +38,10 @@ public class SearchBarPage extends BasePage {
     }
     public void searchBarClick() {
         searchBarSubmit.click();
+    }
+
+    public List<WebElement> products() {
+        return productsList;
     }
 
     public List<ProductComponent> getAllDisplayedProducts() {

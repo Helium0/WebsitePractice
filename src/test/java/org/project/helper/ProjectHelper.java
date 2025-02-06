@@ -15,13 +15,14 @@ import java.util.List;
 public class ProjectHelper extends BasePage {
 
 
-    private WebDriverWait webDriverWait() {
+    public WebDriverWait webDriverWait() {
         return new WebDriverWait(driver,Duration.ofSeconds(10));
     }
 
     public void waitForElement(WebElement element) {
         webDriverWait().until(ExpectedConditions.invisibilityOf(element));
     }
+
 
     public SoftAssert softAssert() {
         return new SoftAssert();
