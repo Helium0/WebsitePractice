@@ -8,8 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
 
 
-    @FindBy(xpath = "//a[normalize-space()='Sign in']")
-    private WebElement signInButton;
     @FindBy(xpath = "//a[normalize-space()='Sign out']")
     private WebElement signOutButton;
 
@@ -35,25 +33,21 @@ public class LoginPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void clickSignInButtonAtTheBeginning() {
-        signInButton.click();
-    }
     public void clickSignOutButton() {
         signOutButton.click();
     }
 
-    public void provideEmail(String email) {
+    public LoginPage loginUser(String email, String password) {
         emailField.clear();
         emailField.sendKeys(email);
-    }
-
-    public void providePassword(String password) {
         passwordField.sendKeys(password);
+        return this;
     }
 
     public void clickSubmitLoginButton() {
         submitLoginButton.click();
     }
+
     public void clickForgotPasswordButton() {
         forgotPasswordButton.click();
     }
@@ -61,6 +55,7 @@ public class LoginPage {
     public void clickCreateAnAccountButton() {
         createAnAccountButton.click();
     }
+
     public void sendEmailAdressField(String email) {
         emailCreate.sendKeys(email);
     }

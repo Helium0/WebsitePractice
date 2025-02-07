@@ -27,7 +27,7 @@ public class SearchBarTests extends BasePage {
     @Test
     public void searchBarExactMatch() {
         searchBarPage = new SearchBarPage(driver);
-        searchBarPage.setSearchBarInput(FADED_DRESS);
+        searchBarPage.setSearchBarInput();
         searchBarPage.searchBarClick();
         ProductComponent foundedDress = searchBarPage.getDisplayedProduct(a -> a.getProductName().equals(FADED_DRESS));
 
@@ -39,7 +39,7 @@ public class SearchBarTests extends BasePage {
     @Test
     public void searchBarPartialMatch() {
         searchBarPage = new SearchBarPage(driver);
-        searchBarPage.setSearchBarInput("dress");
+        searchBarPage.setSearchBarInput();
         searchBarPage.searchBarClick();
         ProductComponent dress = searchBarPage.getDisplayedProduct(a -> a.getProductName().equals(PRINTED_DRESS));
 
@@ -51,7 +51,7 @@ public class SearchBarTests extends BasePage {
     @Test
     public void invalidSearchNoResults() {
         searchBarPage = new SearchBarPage(driver);
-        searchBarPage.setSearchBarInput("boots");
+        searchBarPage.setSearchBarInput();
         searchBarPage.searchBarClick();
         List<ProductComponent> boots = searchBarPage.getAllDisplayedProducts();
 

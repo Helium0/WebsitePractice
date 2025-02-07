@@ -7,6 +7,7 @@ import org.project.BasePage;
 import org.project.helper.DataProv;
 import org.project.pages.DefineCustomerDetailsPage;
 import org.project.pages.LoginPage;
+import org.project.pages.NavigationBarPage;
 import org.project.utilities.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -20,6 +21,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
     private LoginPage loginPage;
     private ReadProperties readProperties;
     private LoginTests loginTests;
+    private NavigationBarPage navigationBarPage;
     private DefineCustomerDetailsPage defineCustomerDetailsPage;
     private final String ALREADY_REGISTERED_EMAIL = "An account using this email address has already been registered. Please enter a valid password or request a new one.";
     private final String PERSONAL_INFORMATION = "YOUR PERSONAL INFORMATION";
@@ -29,7 +31,8 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
     public void emptyEmailAdress() {
         loginPage = new LoginPage(driver);
         loginTests = new LoginTests();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.clickCreateAnAccountButton();
 
         Assert.assertEquals(loginTests.getINVALID_EMAIL(),"Invalid email address.");
@@ -40,7 +43,8 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         readProperties = new ReadProperties();
         loginPage = new LoginPage(driver);
         loginTests = new LoginTests();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(readProperties.readValue("numberEmail"));
         loginPage.clickCreateAnAccountButton();
 
@@ -53,7 +57,8 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         loginPage = new LoginPage(driver);
         loginTests = new LoginTests();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(readProperties.readValue("registeredEmail"));
         loginPage.clickCreateAnAccountButton();
 
@@ -64,7 +69,8 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
     public void validEmailAdress() throws IOException {
         readProperties = new ReadProperties();
         loginPage = new LoginPage(driver);
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(readProperties.readValue("unregisteredEmail"));
         loginPage.clickCreateAnAccountButton();
         WebElement el = driver.findElement(By.xpath("//div[@class='account_creation']//h3"));
@@ -75,7 +81,8 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
     @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class)    // DataProv class used also in this case :)
     public void differentEmailVariations(String email) throws InterruptedException {
         loginPage = new LoginPage(driver);
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         loginTests = new LoginTests();
         String[] userEmail = email.split(",");

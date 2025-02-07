@@ -33,11 +33,11 @@ public class SearchBarPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void setSearchBarInput(String product) {
-        searchBarInput.sendKeys(product);
+    public WebElement setSearchBarInput() {
+        return searchBarInput;
     }
-    public void searchBarClick() {
-        searchBarSubmit.click();
+    public WebElement searchBarClick() {
+      return  searchBarSubmit;
     }
 
     public List<WebElement> products() {

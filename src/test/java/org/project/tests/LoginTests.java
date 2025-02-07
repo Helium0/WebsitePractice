@@ -7,6 +7,7 @@ import org.project.BasePage;
 import org.project.helper.DataProv;
 import org.project.pages.DefineCustomerDetailsPage;
 import org.project.pages.LoginPage;
+import org.project.pages.NavigationBarPage;
 import org.project.utilities.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,12 +20,14 @@ public class LoginTests extends BasePage {
     private ReadProperties readProperties; // class for reading private credentials from separated file
     private LoginPage loginPage;
     private DefineCustomerDetailsPage defineCustomerDetailsPage;
+    private NavigationBarPage navigationBarPage;
 
     // Error texts from login page. Used for assertions.
     private final String EMAIL_REQUIRED = "An email address required.";
     private final String PASSWORD_REQUIRED = "Password is required.";
     private final String INVALID_DATA = "Authentication failed.";
     private final String INVALID_EMAIL = "Invalid email address.";
+    private final String INVALID_PASSWORD = "Invalid password.";
     private final String SUCCESSFULLY_LOGGED = "Welcome to your account. Here you can manage all of your personal information and orders.";
 
     /* I used provider class for learning purpose. With this class I can read the data from JSON file and pass
@@ -39,14 +42,14 @@ public class LoginTests extends BasePage {
         return INVALID_EMAIL;
     }
 
-    @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class, dependsOnMethods = "loginToAccountWithoutEmail")
+    @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class)
     public void loginsWithDataProvider(String data) {
         loginPage = new LoginPage(driver);
+        navigationBarPage = new NavigationBarPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage.navigationBarUserSignIn();
         String [] users = data.split(",");
-        loginPage.provideEmail(users[0]);
-        loginPage.providePassword(users[1]);
+        loginPage.loginUser(users[0],users[1]);
         loginPage.clickSubmitLoginButton();
 
         if(defineCustomerDetailsPage.webElementsError().get(0).contains("address required")) {
@@ -57,6 +60,8 @@ public class LoginTests extends BasePage {
             Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), INVALID_DATA);
         } else if (defineCustomerDetailsPage.webElementsError().get(0).contains("Invalid email")) {
             Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), INVALID_EMAIL);
+        } else if (defineCustomerDetailsPage.webElementsError().get(0).contains("Invalid password")) {
+            Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), INVALID_PASSWORD);
         } else {
             Assert.fail("Assertion failed");
         }
@@ -67,9 +72,9 @@ public class LoginTests extends BasePage {
     public void loginToAccountWithInvalidData() throws IOException {
         loginPage = new LoginPage(driver);
         readProperties = new ReadProperties();
-        loginPage.clickSignInButtonAtTheBeginning();
-        loginPage.provideEmail(readProperties.readValue("wrongEmail"));
-        loginPage.providePassword(readProperties.readValue("wrongPassword"));
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
+        loginPage.loginUser(readProperties.readValue("wrongEmail"),readProperties.readValue("wrongPassword"));
         loginPage.clickSubmitLoginButton();
         WebElement element = driver.findElement(By.xpath("//li[text()='Authentication failed.']"));
 
@@ -80,7 +85,8 @@ public class LoginTests extends BasePage {
     @Test(dependsOnMethods = "loginToAccountWithInvalidData")
     public void loginToAccountWithoutData() {
         loginPage = new LoginPage(driver);
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.clickSubmitLoginButton();
         WebElement element = driver.findElement(By.xpath("//li[text()='An email address required.']"));
 
@@ -92,8 +98,9 @@ public class LoginTests extends BasePage {
     public void loginToAccountWithoutPassword() throws IOException {
         loginPage = new LoginPage(driver);
         readProperties = new ReadProperties();
-        loginPage.clickSignInButtonAtTheBeginning();
-        loginPage.provideEmail(readProperties.readValue("wrongEmail"));
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
+        loginPage.loginUser(readProperties.readValue("wrongEmail"),"");
         loginPage.clickSubmitLoginButton();
         WebElement element = driver.findElement(By.xpath("//li[text()='Password is required.']"));
 
@@ -104,8 +111,9 @@ public class LoginTests extends BasePage {
     public void loginToAccountWithoutEmail() throws IOException {
         loginPage = new LoginPage(driver);
         readProperties = new ReadProperties();
-        loginPage.clickSignInButtonAtTheBeginning();
-        loginPage.providePassword(readProperties.readValue("wrongPassword"));
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
+        loginPage.loginUser("",readProperties.readValue("wrongPassword"));
         loginPage.clickSubmitLoginButton();
         WebElement element = driver.findElement(By.xpath("//li[text()='An email address required.']"));
 
@@ -116,9 +124,9 @@ public class LoginTests extends BasePage {
     public void loginToAccountWithCorrectData() throws IOException {
         loginPage = new LoginPage(driver);
         readProperties = new ReadProperties();
-        loginPage.clickSignInButtonAtTheBeginning();
-        loginPage.provideEmail(readProperties.readValue("validEmail"));
-        loginPage.providePassword(readProperties.readValue("validPassword"));
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
+        loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         WebElement el = driver.findElement(By.xpath("//p[text()='Welcome to your account. Here you can manage all of your personal information and orders.']"));
 

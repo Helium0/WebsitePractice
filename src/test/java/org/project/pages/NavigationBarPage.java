@@ -11,15 +11,23 @@ public class NavigationBarPage {
     private WebElement navigationBarSignOutButton;
     @FindBy(id = "#contact-link")
     private WebElement navigationBarContactUsButton;
+    @FindBy(css = ".login")
+    private WebElement navigationBarSignIn;
+
 
     public NavigationBarPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
+
     }
 
+    public void navigationBarUserSignIn() {
+        navigationBarSignIn.click();
+    }
 
     public void signOutFromNavigationBar() {
         navigationBarSignOutButton.click();
     }
+
     public void clickContactUsFromNavigationBar() {
         navigationBarContactUsButton.click();
     }

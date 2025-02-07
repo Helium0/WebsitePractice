@@ -6,6 +6,7 @@ import org.project.BasePage;
 import org.project.helper.CustomerHelper;
 import org.project.pages.DefineCustomerDetailsPage;
 import org.project.pages.LoginPage;
+import org.project.pages.NavigationBarPage;
 import org.project.utilities.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -18,6 +19,7 @@ public class DefineCustomerDetailsTests extends BasePage {
     private LoginPage loginPage;
     private ReadProperties readProperties;
     private DefineCustomerDetailsPage defineCustomerDetailsPage;
+    private NavigationBarPage navigationBarPage;
     private CustomerHelper customerHelper;
     private final String FIRST_NAME = "firstname is required.";
     private final String LAST_NAME = "lastname is required.";
@@ -40,8 +42,9 @@ public class DefineCustomerDetailsTests extends BasePage {
     public void createAccountFillPersonalInformation() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
+        navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -64,8 +67,9 @@ public class DefineCustomerDetailsTests extends BasePage {
     public void createAccountFillPersonalInformationWithoutDateBirth() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
+        navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -84,8 +88,9 @@ public class DefineCustomerDetailsTests extends BasePage {
     public void createAccountWithoutAnyPersonalInformation() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
+        navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickRegisterAccountButton();
@@ -100,8 +105,9 @@ public class DefineCustomerDetailsTests extends BasePage {
     public void createAccountWithoutPassword() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
+        navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -117,8 +123,9 @@ public class DefineCustomerDetailsTests extends BasePage {
     public void createAccountWithoutFirstName() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
+        navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -133,8 +140,9 @@ public class DefineCustomerDetailsTests extends BasePage {
     public void createAccountWithoutLastName() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
+        navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -149,8 +157,9 @@ public class DefineCustomerDetailsTests extends BasePage {
     public void createAccountWithoutFirstNameAndLastName() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
+        navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -166,8 +175,9 @@ public class DefineCustomerDetailsTests extends BasePage {
     public void createAccountWithoutFirstNameAndPassword() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
+        navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -183,9 +193,10 @@ public class DefineCustomerDetailsTests extends BasePage {
     public void createAccountWithExistedEmail() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
+        navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
         readProperties = new ReadProperties();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
