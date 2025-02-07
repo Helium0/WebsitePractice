@@ -8,6 +8,7 @@ import org.project.helper.ProjectHelper;
 import org.project.pages.DefineCustomerDetailsPage;
 import org.project.pages.ForgotPasswordPage;
 import org.project.pages.LoginPage;
+import org.project.pages.NavigationBarPage;
 import org.project.utilities.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -20,6 +21,7 @@ public class ForgotPasswordTests extends BasePage {
     private ForgotPasswordPage forgotPasswordPage;
     private DefineCustomerDetailsPage defineCustomerDetailsPage;
     private ReadProperties readProperties;
+    private NavigationBarPage navigationBarPage;
     private final String AUTHENTICATION_TEXT = "AUTHENTICATION";
     private final String CONFIRMATION_EMAIL = "email has been sent";
     private final String INVALID_EMAIL = "Invalid email address.";
@@ -30,7 +32,8 @@ public class ForgotPasswordTests extends BasePage {
         loginPage = new LoginPage(driver);
         forgotPasswordPage = new ForgotPasswordPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.clickForgotPasswordButton();
         forgotPasswordPage.clickOnRetrievePasswordButton();
 
@@ -44,7 +47,8 @@ public class ForgotPasswordTests extends BasePage {
         forgotPasswordPage = new ForgotPasswordPage(driver);
         readProperties = new ReadProperties();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.clickForgotPasswordButton();
         loginPage.provideEmail(readProperties.readValue("wrongEmail"));
         forgotPasswordPage.clickOnRetrievePasswordButton();
@@ -57,7 +61,8 @@ public class ForgotPasswordTests extends BasePage {
         loginPage = new LoginPage(driver);
         forgotPasswordPage = new ForgotPasswordPage(driver);
         readProperties = new ReadProperties();
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.clickForgotPasswordButton();
         loginPage.provideEmail(readProperties.readValue("validEmail"));
         forgotPasswordPage.clickOnRetrievePasswordButton();
@@ -71,7 +76,8 @@ public class ForgotPasswordTests extends BasePage {
     public void forgotPasswordBackToLoginPage() {
         loginPage = new LoginPage(driver);
         forgotPasswordPage = new ForgotPasswordPage(driver);
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.clickForgotPasswordButton();
         forgotPasswordPage.clickOnRetrievePasswordButton();
         forgotPasswordPage.clickOnBackToLoginButton();
@@ -85,7 +91,8 @@ public class ForgotPasswordTests extends BasePage {
         loginPage = new LoginPage(driver);
         forgotPasswordPage = new ForgotPasswordPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
-        loginPage.clickSignInButtonAtTheBeginning();
+        navigationBarPage = new NavigationBarPage(driver);
+        navigationBarPage.navigationBarUserSignIn();
         loginPage.clickForgotPasswordButton();
         String [] email = data.split(",");
         loginPage.provideEmail(email[0]);

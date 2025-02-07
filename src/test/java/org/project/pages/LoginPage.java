@@ -44,6 +44,15 @@ public class LoginPage {
         return this;
     }
 
+    public void provideEmail(String email) {
+        emailField.clear();
+        emailField.sendKeys(email);
+    }
+
+    public void providePassword(String password) {
+        passwordField.sendKeys(password);
+    }
+
     public void clickSubmitLoginButton() {
         submitLoginButton.click();
     }
@@ -55,7 +64,6 @@ public class LoginPage {
     public void clickCreateAnAccountButton() {
         createAnAccountButton.click();
     }
-
     public void sendEmailAdressField(String email) {
         emailCreate.sendKeys(email);
     }
