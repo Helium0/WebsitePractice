@@ -48,7 +48,7 @@ public class ProductTests extends BasePage {
         productPage.clickOnProceedToCheckoutButton();
 
 
-        WebElement el = driver.findElement(By.xpath("//span[@class='price']"));
+        WebElement el = driver.findElement(By.xpath("//td[@class='cart_total']"));
         Assert.assertEquals(el.getText(), "$29");
 
         shoppingCartSummary.deleteProductButton.click();
@@ -77,7 +77,7 @@ public class ProductTests extends BasePage {
         productPage.clickOnAddProductToCartButton().click();
         productPage.clickOnProceedToCheckoutButton();
 
-        WebElement el = driver.findElement(By.xpath("//td[text()='$58']"));
+        WebElement el = driver.findElement(By.xpath("//td[@class='cart_total']"));
         Assert.assertEquals(el.getText(), "$58");
 
         shoppingCartSummary.deleteProductButton.click();
@@ -105,7 +105,7 @@ public class ProductTests extends BasePage {
         productPage.clickOnAddProductToCartButton().click();
         productPage.clickOnProceedToCheckoutButton();
 
-        WebElement el = driver.findElement(By.xpath("//td[text()='$145']"));
+        WebElement el = driver.findElement(By.xpath("//td[@class='cart_total']"));
         Assert.assertEquals(el.getText(), "$145");
 
         shoppingCartSummary.deleteProductButton.click();
