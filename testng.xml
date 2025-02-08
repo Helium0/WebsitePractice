@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MyAutomationProject">
+    <test name="MyTest">
+        <groups>
+            <define name="dailyWorkout">
+                <include name="functional"/>
+                <include name="regression"/>
+            </define>
+            <define name="weeklyWorkout">
+                <include name="functional"/>
+                <include name="regression"/>
+                <include name="smoke"/>
+            </define>
+            <run>
+                <include name="weeklyWorkout"/>
+            </run>
+        </groups>
+    <classes>
+        <class name="org.project.tests.LoginTests"/>
+        <class name="org.project.tests.ForgotPasswordTests"/>
+        <class name="org.project.tests.ProvideEmailToCreateAccountTests"/>
+        <class name="org.project.tests.DefineCustomerDetailsTests"/>
+        <class name="org.project.tests.UpdateCustomerDetailsTests"/>
+        <class name="org.project.tests.DefineCustomerAdressTests"/>
+        <class name="org.project.tests.SearchBarTests"/>
+        <class name="org.project.tests.ProductTests"/>
+        </classes>
+    </test>
+</suite>
