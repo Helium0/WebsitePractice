@@ -7,7 +7,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class WebDriverFactory {
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
+
     public  WebDriver getCorrectBrowser(String browser) {
 
         switch (browser) {
@@ -18,7 +19,5 @@ public class WebDriverFactory {
             default:
                 throw new RuntimeException("Incorrect browser: "+browser);
         }
-
     }
-
 }

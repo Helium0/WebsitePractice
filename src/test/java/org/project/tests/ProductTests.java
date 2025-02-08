@@ -7,7 +7,7 @@ import org.project.helper.ProductComponent;
 import org.project.helper.ProjectHelper;
 import org.project.pages.ProductPage;
 import org.project.pages.SearchBarPage;
-import org.project.pages.ShoppingCartSummary;
+import org.project.pages.ShoppingCartSummaryPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,7 +18,7 @@ public class ProductTests extends BasePage {
     private SearchBarTests searchBarTests;
     private ProductPage productPage;
     private ProjectHelper projectHelper;
-    private ShoppingCartSummary shoppingCartSummary;
+    private ShoppingCartSummaryPage shoppingCartSummary;
 
     private final String PRODUCT_SIZE = "M";
     private final String PRODUCT_COLOR = "Orange";
@@ -26,11 +26,11 @@ public class ProductTests extends BasePage {
 
 
 
-    @Test
+    @Test(groups = "functional")
     public void addProductToTheCart() throws InterruptedException {
         productPage = new ProductPage(driver);
         searchBarPage = new SearchBarPage(driver);
-        shoppingCartSummary = new ShoppingCartSummary(driver);
+        shoppingCartSummary = new ShoppingCartSummaryPage(driver);
         searchBarTests = new SearchBarTests();
         projectHelper = new ProjectHelper();
         productPage.waitForElementsToAppear(searchBarPage.setSearchBarInput(), searchBarTests.getPRINTED_DRESS(),
@@ -55,11 +55,11 @@ public class ProductTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "functional")
     public void changeProductQuantityAndAddToTheCart() throws InterruptedException {
         productPage = new ProductPage(driver);
         searchBarPage = new SearchBarPage(driver);
-        shoppingCartSummary = new ShoppingCartSummary(driver);
+        shoppingCartSummary = new ShoppingCartSummaryPage(driver);
         searchBarTests = new SearchBarTests();
         projectHelper = new ProjectHelper();
         productPage.waitForElementsToAppear(searchBarPage.setSearchBarInput(), searchBarTests.getPRINTED_DRESS(),
@@ -84,11 +84,11 @@ public class ProductTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "functional")
     public void changeProductQuantityByButtonAndAddToTheCart() throws InterruptedException {
         productPage = new ProductPage(driver);
         searchBarPage = new SearchBarPage(driver);
-        shoppingCartSummary = new ShoppingCartSummary(driver);
+        shoppingCartSummary = new ShoppingCartSummaryPage(driver);
         searchBarTests = new SearchBarTests();
         projectHelper = new ProjectHelper();
         productPage.waitForElementsToAppear(searchBarPage.setSearchBarInput(), searchBarTests.getPRINTED_DRESS(),

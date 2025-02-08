@@ -36,9 +36,9 @@ public class DefineCustomerAdressPage {
 
 
 
-
     public DefineCustomerAdressPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+
     }
 
 

@@ -16,13 +16,15 @@ import java.io.IOException;
 
 public class DefineCustomerDetailsTests extends BasePage {
 
-    private LoginPage loginPage;
+
     private ReadProperties readProperties;
     private DefineCustomerDetailsPage defineCustomerDetailsPage;
     private NavigationBarPage navigationBarPage;
     private CustomerHelper customerHelper;
+    private LoginPage loginPage;
     private final String FIRST_NAME = "firstname is required.";
     private final String LAST_NAME = "lastname is required.";
+    private final String INVALID_LAST_NAME = "lastname is invalid.";
     private final String PASSWORD = "passwd is required.";
     private final String ACCOUNT_CREATED = "Your account has been created.";
     private final String ACCOUNT_ON_THIS_EMAIL_ALREADY_REGISTERED = "An account using this email address has already been registered.";
@@ -38,7 +40,7 @@ public class DefineCustomerDetailsTests extends BasePage {
     }
 
 
-    @Test
+    @Test(groups = "functional")
     public void createAccountFillPersonalInformation() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -63,7 +65,7 @@ public class DefineCustomerDetailsTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "functional")
     public void createAccountFillPersonalInformationWithoutDateBirth() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -84,7 +86,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         loginPage.clickSignOutButton();
     }
 
-    @Test
+    @Test(groups = "regression")
     public void createAccountWithoutAnyPersonalInformation() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -101,7 +103,7 @@ public class DefineCustomerDetailsTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "regression")
     public void createAccountWithoutPassword() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -119,7 +121,7 @@ public class DefineCustomerDetailsTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "regression")
     public void createAccountWithoutFirstName() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -136,7 +138,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),FIRST_NAME);
     }
 
-    @Test
+    @Test(groups = "regression")
     public void createAccountWithoutLastName() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -153,7 +155,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),LAST_NAME);
     }
 
-    @Test
+    @Test(groups = "regression")
     public void createAccountWithoutFirstNameAndLastName() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -171,7 +173,7 @@ public class DefineCustomerDetailsTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "regression")
     public void createAccountWithoutFirstNameAndPassword() {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -184,12 +186,12 @@ public class DefineCustomerDetailsTests extends BasePage {
         defineCustomerDetailsPage.setCustomerLastName(customerHelper.customerObject().getCustomerEmail());
         defineCustomerDetailsPage.clickRegisterAccountButton();
 
-        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),FIRST_NAME);
-        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(1),PASSWORD);
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0),INVALID_LAST_NAME);
+        Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(1),FIRST_NAME);
 
     }
 
-    @Test
+    @Test(groups = "regression")
     public void createAccountWithExistedEmail() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);

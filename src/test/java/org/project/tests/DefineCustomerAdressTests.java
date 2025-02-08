@@ -28,14 +28,14 @@ public class DefineCustomerAdressTests extends BasePage {
     private final String CUSTOMER_FUTURE_REFERENCE_ADDRESS = "HONOLULU";
     private final String NO_CUSTOMER_ADDRESSES = "No addresses are available. Add a new address";
     private final String CUSTOMER_STATE = "Kansas";  // can be change for any US states
-    private final String CITY_REQUIRED = "111city is required.";
-    private final String POSTAL_CODE_REQUIRED = "11The Zip/Postal code you've entered is invalid. It must follow this format: 00000";
-    private final String PHONE_NUMBER_REQUIRED = "000You must register at least one phone number.";
+    private final String CITY_REQUIRED = "city is required.";
+    private final String POSTAL_CODE_REQUIRED = "The Zip/Postal code you've entered is invalid. It must follow this format: 00000";
+    private final String PHONE_NUMBER_REQUIRED = "You must register at least one phone number.";
     private final String ADDRESS_REQUIRED = "address1 is required.";
     private final String STATE_REQUIRED = "This country requires you to chose a State.";
 
 
-    @Test
+    @Test(groups = "functional")
     public void fillCustomerFirstAddress() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerAdressPage = new DefineCustomerAdressPage(driver);
@@ -85,7 +85,7 @@ public class DefineCustomerAdressTests extends BasePage {
 
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "regression")
     public void fillCustomerFirstAddressWithoutCity() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerAdressPage = new DefineCustomerAdressPage(driver);
@@ -112,7 +112,7 @@ public class DefineCustomerAdressTests extends BasePage {
 
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "regression")
     public void fillCustomerFirstAddressWithoutPostalCode() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerAdressPage = new DefineCustomerAdressPage(driver);
@@ -139,7 +139,7 @@ public class DefineCustomerAdressTests extends BasePage {
 
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "regression")
     public void fillCustomerFirstAddressWithoutMobilePhone() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerAdressPage = new DefineCustomerAdressPage(driver);
@@ -165,7 +165,7 @@ public class DefineCustomerAdressTests extends BasePage {
         navigationBarPage.signOutFromNavigationBar();
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "regression")
     public void fillCustomerFirstAddressWithoutCountryState() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerAdressPage = new DefineCustomerAdressPage(driver);
@@ -190,7 +190,7 @@ public class DefineCustomerAdressTests extends BasePage {
         navigationBarPage.signOutFromNavigationBar();
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "regression")
     public void fillCustomerFirstAddressWithoutAddress() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerAdressPage = new DefineCustomerAdressPage(driver);
@@ -215,7 +215,7 @@ public class DefineCustomerAdressTests extends BasePage {
         navigationBarPage.signOutFromNavigationBar();
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "regression")
     public void fillCustomerFirstAddressWithoutRequiredFields() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerAdressPage = new DefineCustomerAdressPage(driver);

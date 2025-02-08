@@ -27,7 +27,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
     private final String INCORRECT_PASSWORD = "The password you entered is incorrect.";
 
 
-    @Test
+    @Test(groups = "functional")
     public void updateUserFirstName() throws IOException {
         loginPage = new LoginPage(driver);
         updateCustomerDetailsPage = new UpdateCustomerDetailsPage(driver);
@@ -49,7 +49,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
     }
 
 
-    @Test(dependsOnMethods = "updateUserFirstName")
+    @Test(dependsOnMethods = "updateUserFirstName",groups = "functional")
     public void revertCustomerSurname() throws IOException {
         loginPage = new LoginPage(driver);
         updateCustomerDetailsPage = new UpdateCustomerDetailsPage(driver);
@@ -66,7 +66,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         loginPage.clickSignOutButton();
     }
 
-    @Test
+    @Test(groups = "regression")
     public void updateCustomerDetailsWithoutPassword() throws IOException {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
@@ -84,7 +84,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "functional")
     public void updateCustomerDetailsWhenClearedFirstName() throws IOException {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
@@ -104,7 +104,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         navigationBarPage.signOutFromNavigationBar();
     }
 
-    @Test
+    @Test(groups = "functional")
     public void updateCustomerDetailsWhenClearedLastName() throws IOException {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
@@ -124,7 +124,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         navigationBarPage.signOutFromNavigationBar();
     }
 
-    @Test
+    @Test(groups = "functional")
     public void updateCustomerDetailsWhenClearedFirstNameAndLastName() throws IOException, InterruptedException {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
@@ -148,7 +148,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "regression")
     public void updateCustomerDetailsWithWrongPassword() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -166,7 +166,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         navigationBarPage.signOutFromNavigationBar();
     }
 
-    @Test
+    @Test(groups = "regression")
     public void backToHomePage() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -185,7 +185,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "regression")
     public void backToCustomerAccountDetails() throws IOException {
         loginTests = new LoginTests();
         loginPage = new LoginPage(driver);

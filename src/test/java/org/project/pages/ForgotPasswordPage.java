@@ -13,9 +13,17 @@ public class ForgotPasswordPage {
     @FindBy(xpath = "//a[@title='Back to Login']")
     private WebElement backToLoginButton;
 
+    @FindBy(className = ".alert.alert-success")
+    private WebElement confirmationMessage;
+
 
     public ForgotPasswordPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
+
+    }
+
+    public WebElement getConfirmationMessage() {
+        return confirmationMessage;
     }
 
     public void clickOnRetrievePasswordButton() {

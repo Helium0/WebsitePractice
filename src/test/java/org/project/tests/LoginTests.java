@@ -42,7 +42,7 @@ public class LoginTests extends BasePage {
         return INVALID_EMAIL;
     }
 
-    @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class)
+    @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class, groups = "smoke", priority = 1)
     public void loginsWithDataProvider(String data) {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
@@ -68,7 +68,7 @@ public class LoginTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "regression")
     public void loginToAccountWithInvalidData() throws IOException {
         loginPage = new LoginPage(driver);
         readProperties = new ReadProperties();
@@ -82,7 +82,7 @@ public class LoginTests extends BasePage {
 
     }
 
-    @Test(dependsOnMethods = "loginToAccountWithInvalidData")
+    @Test(dependsOnMethods = "loginToAccountWithInvalidData",groups = "regression")
     public void loginToAccountWithoutData() {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
@@ -94,7 +94,7 @@ public class LoginTests extends BasePage {
 
     }
 
-    @Test(dependsOnMethods = "loginToAccountWithoutData")
+    @Test(dependsOnMethods = "loginToAccountWithoutData",groups = "regression")
     public void loginToAccountWithoutPassword() throws IOException {
         loginPage = new LoginPage(driver);
         readProperties = new ReadProperties();
@@ -107,7 +107,7 @@ public class LoginTests extends BasePage {
         Assert.assertEquals(element.getText(),PASSWORD_REQUIRED);
     }
 
-    @Test(dependsOnMethods = "loginToAccountWithoutPassword")
+    @Test(dependsOnMethods = "loginToAccountWithoutPassword",groups = "regression")
     public void loginToAccountWithoutEmail() throws IOException {
         loginPage = new LoginPage(driver);
         readProperties = new ReadProperties();
@@ -120,7 +120,7 @@ public class LoginTests extends BasePage {
         Assert.assertEquals(element.getText(),EMAIL_REQUIRED);
     }
 
-    @Test
+    @Test(groups = "functional")
     public void loginToAccountWithCorrectData() throws IOException {
         loginPage = new LoginPage(driver);
         readProperties = new ReadProperties();

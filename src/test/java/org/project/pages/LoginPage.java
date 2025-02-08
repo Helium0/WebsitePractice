@@ -29,8 +29,11 @@ public class LoginPage {
     private WebElement createAnAccountButton;
 
 
+
+
     public LoginPage (WebDriver driver) {
         PageFactory.initElements(driver,this);
+
     }
 
     public void clickSignOutButton() {

@@ -31,8 +31,12 @@ public class DefineCustomerDetailsPage {
     private List<WebElement> elementsError;
 
 
+
+
+
     public DefineCustomerDetailsPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
+
     }
 
     public void clickMaleRadioButton() {

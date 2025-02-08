@@ -5,15 +5,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ShoppingCartSummary {
+public class ShoppingCartSummaryPage {
 
     @FindBy(className = "cart_quantity_delete")
     public WebElement deleteProductButton;
 
 
 
-    public ShoppingCartSummary(WebDriver driver) {
+
+    public ShoppingCartSummaryPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+
     }
 
 

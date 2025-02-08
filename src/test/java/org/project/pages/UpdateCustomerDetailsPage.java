@@ -20,8 +20,11 @@ public class UpdateCustomerDetailsPage {
    @FindBy(name = "submitIdentity")
    private WebElement saveCustomerPersonalInformationChangesButton;
 
+
+
    public UpdateCustomerDetailsPage(WebDriver driver) {
        PageFactory.initElements(driver, this);
+
    }
 
    public void clickOnCustomerPersonalInformation() {

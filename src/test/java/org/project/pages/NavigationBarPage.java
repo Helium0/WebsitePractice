@@ -15,6 +15,7 @@ public class NavigationBarPage {
     private WebElement navigationBarSignIn;
 
 
+
     public NavigationBarPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
 

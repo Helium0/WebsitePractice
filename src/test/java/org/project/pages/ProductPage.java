@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.project.BasePage;
 
 import java.util.List;
 
@@ -28,6 +29,8 @@ public class ProductPage {
 
     @FindBy(className = "icon-plus")
     private WebElement plusQuantityButton;
+
+
 
 
     public ProductPage(WebDriver driver) {

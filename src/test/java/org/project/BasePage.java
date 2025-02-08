@@ -1,25 +1,34 @@
 package org.project;
 
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.*;
+
 import java.time.Duration;
 
 public class BasePage extends WebDriverFactory {
 
 
-    @BeforeTest
+
+
+    @BeforeGroups({"functional", "regression", "smoke"})
     public void getWebPage() {
         WebDriverFactory webDriverFactory = new WebDriverFactory();
-        driver = webDriverFactory.getCorrectBrowser("Chrome");
-        driver.get("http://www.automationpractice.pl/index.php");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
+        if (driver == null) {
+            driver = webDriverFactory.getCorrectBrowser("Chrome");
+            driver.get("http://www.automationpractice.pl/index.php");
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().window().maximize();
+
+        }
     }
 
 
-    @AfterTest
+    @AfterGroups({"functional", "regression", "smoke"})
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
-
 }

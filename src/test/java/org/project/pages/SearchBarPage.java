@@ -25,17 +25,19 @@ public class SearchBarPage extends BasePage {
     private List<WebElement> productsList;
 
 
-    public WebElement getSearchBarInput() {
-        return searchBarInput;
-    }
-
     public SearchBarPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+
+    }
+
+    public WebElement getSearchBarInput() {
+        return searchBarInput;
     }
 
     public WebElement setSearchBarInput() {
         return searchBarInput;
     }
+
     public WebElement searchBarClick() {
       return  searchBarSubmit;
     }

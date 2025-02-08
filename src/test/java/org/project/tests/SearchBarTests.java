@@ -19,12 +19,10 @@ public class SearchBarTests extends BasePage {
         return PRINTED_DRESS;
     }
 
-    public String getFADED_DRESS() {
-        return FADED_DRESS;
-    }
 
 
-    @Test
+
+    @Test(groups = "functional")
     public void searchBarExactMatch() {
         searchBarPage = new SearchBarPage(driver);
         searchBarPage.setSearchBarInput();
@@ -36,7 +34,7 @@ public class SearchBarTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "functional")
     public void searchBarPartialMatch() {
         searchBarPage = new SearchBarPage(driver);
         searchBarPage.setSearchBarInput();
@@ -48,7 +46,7 @@ public class SearchBarTests extends BasePage {
 
     }
 
-    @Test
+    @Test(groups = "functional")
     public void invalidSearchNoResults() {
         searchBarPage = new SearchBarPage(driver);
         searchBarPage.setSearchBarInput();

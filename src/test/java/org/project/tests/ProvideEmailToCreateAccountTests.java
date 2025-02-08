@@ -27,7 +27,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
     private final String PERSONAL_INFORMATION = "YOUR PERSONAL INFORMATION";
 
 
-    @Test
+    @Test(groups = "regression", priority = 1)
     public void emptyEmailAdress() {
         loginPage = new LoginPage(driver);
         loginTests = new LoginTests();
@@ -38,7 +38,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         Assert.assertEquals(loginTests.getINVALID_EMAIL(),"Invalid email address.");
     }
 
-    @Test
+    @Test(groups = "regression", priority = 1)
     public void numberAsEmailAdress() throws IOException {
         readProperties = new ReadProperties();
         loginPage = new LoginPage(driver);
@@ -51,7 +51,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         Assert.assertEquals(loginTests.getINVALID_EMAIL(), "Invalid email address.");
     }
 
-    @Test
+    @Test(groups = "regression", priority = 1)
     public void registerOnExistingEmail() throws IOException {
         readProperties = new ReadProperties();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
@@ -65,7 +65,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), ALREADY_REGISTERED_EMAIL);
     }
 
-    @Test
+    @Test(groups = "functional")
     public void validEmailAdress() throws IOException {
         readProperties = new ReadProperties();
         loginPage = new LoginPage(driver);
@@ -78,7 +78,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         Assert.assertEquals(el.getText(), PERSONAL_INFORMATION);
     }
 
-    @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class)    // DataProv class used also in this case :)
+    @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class, groups = "smoke", priority = 2)    // DataProv class used also in this case :)
     public void differentEmailVariations(String email) throws InterruptedException {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
