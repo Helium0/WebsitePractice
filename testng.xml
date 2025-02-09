@@ -18,8 +18,8 @@
         </groups>
     <classes>
         <class name="org.project.tests.LoginTests"/>
-        <class name="org.project.tests.ForgotPasswordTests"/>
         <class name="org.project.tests.ProvideEmailToCreateAccountTests"/>
+        <class name="org.project.tests.ForgotPasswordTests"/>
         <class name="org.project.tests.DefineCustomerDetailsTests"/>
         <class name="org.project.tests.UpdateCustomerDetailsTests"/>
         <class name="org.project.tests.DefineCustomerAdressTests"/>
