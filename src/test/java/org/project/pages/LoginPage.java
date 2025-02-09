@@ -29,7 +29,7 @@ public class LoginPage {
     @FindBy(id = "SubmitCreate")
     private WebElement createAnAccountButton;
 
-    private final By EMAIL_LOCATOR = By.id("email_create");
+    private final By EMAIL_LOCATOR = By.xpath("//input[contains(@id, 'email_create')]");
 
 
     public LoginPage (WebDriver driver) {
