@@ -94,6 +94,7 @@ public class ProductPage {
                 element.sendKeys(text);
                 elementTwo.click();
                 wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
+                wait.until(ExpectedConditions.elementToBeClickable(elementTwo));
                 break;
             } catch (StaleElementReferenceException | NoSuchElementException |
                      NullPointerException | InvalidElementStateException ek) {
