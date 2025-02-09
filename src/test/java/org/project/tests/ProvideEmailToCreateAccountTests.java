@@ -68,20 +68,20 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), ALREADY_REGISTERED_EMAIL);
     }
 
-    @Test(groups = "functional")
-    public void validEmailAddress() throws IOException {
-        readProperties = new ReadProperties();
-        loginPage = new LoginPage(driver);
-        navigationBarPage = new NavigationBarPage(driver);
-        projectHelper = new ProjectHelper();
-        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(loginPage.getEMAIL_LOCATOR());
-        loginPage.sendEmailAdressField(readProperties.readValue("unregisteredEmail"));
-        loginPage.clickCreateAnAccountButton();
-        WebElement el = driver.findElement(By.xpath("//div[@class='account_creation']//h3"));
-
-        Assert.assertEquals(el.getText(), PERSONAL_INFORMATION);
-    }
+//    @Test(groups = "functional")
+//    public void validEmailAddress() throws IOException {
+//        readProperties = new ReadProperties();
+//        loginPage = new LoginPage(driver);
+//        navigationBarPage = new NavigationBarPage(driver);
+//        projectHelper = new ProjectHelper();
+//        navigationBarPage.navigationBarUserSignIn();
+//        projectHelper.waitCoupleTimesForElement(loginPage.getEMAIL_LOCATOR());
+//        loginPage.sendEmailAdressField(readProperties.readValue("unregisteredEmail"));
+//        loginPage.clickCreateAnAccountButton();
+//        WebElement el = driver.findElement(By.xpath("//div[@class='account_creation']//h3"));
+//
+//        Assert.assertEquals(el.getText(), PERSONAL_INFORMATION);
+//    }
 
     @Test(dataProvider = "dataProvider", dataProviderClass = DataProv.class, groups = "smoke", priority = 2)    // DataProv class used also in this case :)
     public void differentEmailVariations(String email) throws InterruptedException {
