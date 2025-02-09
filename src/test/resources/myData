@@ -1,0 +1,9 @@
+wrongEmail = patryk.tester@gmail.com
+wrongPassword = tester666999!
+validEmail = patryk.automat1@gmail.com
+numberEmail = 9
+validPassword = P12345
+validLastName = Automat
+validFirstName = Patryk
+registeredEmail = patryk.automat999@gmail.com
+unregisteredEmail = patryk.future66@gmail.com
