@@ -70,4 +70,8 @@ public class LoginPage {
     public void sendEmailAdressField(String email) {
         emailCreate.sendKeys(email);
     }
+
+    public WebElement getEmailField() {
+        return emailCreate;
+    }
 }
