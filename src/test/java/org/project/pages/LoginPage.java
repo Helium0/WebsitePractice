@@ -1,5 +1,6 @@
 package org.project.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,12 +29,16 @@ public class LoginPage {
     @FindBy(id = "SubmitCreate")
     private WebElement createAnAccountButton;
 
-
+    private final By EMAIL_LOCATOR = By.id("email_create");
 
 
     public LoginPage (WebDriver driver) {
         PageFactory.initElements(driver,this);
 
+    }
+
+    public By getEMAIL_LOCATOR() {
+        return EMAIL_LOCATOR;
     }
 
     public void clickSignOutButton() {

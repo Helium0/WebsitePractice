@@ -24,13 +24,13 @@ public class ProjectHelper extends BasePage {
         webDriverWait().until(ExpectedConditions.invisibilityOf(element));
     }
 
-    public void waitCoupleTimesForElement(WebElement element) {
+    public void waitCoupleTimesForElement(WebElement element, By locator) {
         int attempt = 1;
         int sumAttempts = 9;
         while (attempt < sumAttempts) {
             try {
                 attempt ++;
-                webDriverWait().until(ExpectedConditions.visibilityOf(element));
+                webDriverWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
                 webDriverWait().until(ExpectedConditions.elementToBeClickable(element));
                 element.click();
                 break;
