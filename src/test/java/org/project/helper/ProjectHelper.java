@@ -1,10 +1,7 @@
 package org.project.helper;
 
 
-import org.openqa.selenium.InvalidElementStateException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -29,7 +26,7 @@ public class ProjectHelper extends BasePage {
 
     public void waitCoupleTimesForElement(WebElement element) {
         int attempt = 1;
-        int sumAttempts = 5;
+        int sumAttempts = 9;
         while (attempt < sumAttempts) {
             try {
                 attempt ++;
@@ -37,7 +34,7 @@ public class ProjectHelper extends BasePage {
                 webDriverWait().until(ExpectedConditions.elementToBeClickable(element));
                 element.click();
                 break;
-            } catch (NullPointerException | NoSuchElementException | InvalidElementStateException e){
+            } catch (NullPointerException | NoSuchElementException | InvalidElementStateException | TimeoutException e){
                 if (attempt == sumAttempts) {
                     throw e;
                 }
