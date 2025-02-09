@@ -1,5 +1,6 @@
 package org.project.pages;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -41,18 +42,19 @@ public class ForgotPasswordPage {
         backToLoginButton.click();
     }
 
-//    public boolean testTest(WebElement el, WebElement el2) {
-//        boolean asercja = false;
-//        if (el.isDisplayed()) {
-//            asercja = true;
-//        } else  {
-//            el = el2;
-//            asercja = true;
-//        }
-//
-//        System.out.println(el.getText());
-//        return asercja;
-//        }
+    public boolean systemValidationMessage(WebElement el, WebElement el2) {
+        boolean asercja = false;
+        try {
+            if (el.isDisplayed()) {
+                asercja = true;
+            }
+        } catch (NoSuchElementException e) {
+            el = el2;
+            asercja = el2.isDisplayed();
+        }
+
+        return asercja;
+        }
 
     }
 

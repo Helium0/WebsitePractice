@@ -102,28 +102,12 @@ public class ForgotPasswordTests extends BasePage {
         loginPage.provideEmail(email[0]);
         forgotPasswordPage.clickOnRetrievePasswordButton();
 
-
-//        if(driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getDomAttribute("class").contains("danger") ||
-//                driver.findElement(By.xpath("//p[@class='alert alert-success']")).getText().contains("A confirmation email")) {
-//            Assert.assertTrue(driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getDomAttribute("class").contains("danger") ||
-//                    driver.findElement(By.xpath("//p[@class='alert alert-success']")).getText().contains("A confirmation email"));
-//        };
-
-//        forgotPasswordPage.testTest(forgotPasswordPage.getErrorMessage(),forgotPasswordPage.getConfirmationMessage());
+        if (forgotPasswordPage.systemValidationMessage(forgotPasswordPage.getErrorMessage(),forgotPasswordPage.getConfirmationMessage())) {
+            Assert.assertTrue(forgotPasswordPage.systemValidationMessage(forgotPasswordPage.getErrorMessage(),forgotPasswordPage.getConfirmationMessage()),"Validation Failed");
+        } else {
+            Assert.fail("*** Assertion Failed ***");
+        }
 
     }
-
-////        if (forgotPasswordPage.getErrorMessage().getText().contains("Invalid email")) {
-//            Assert.assertEquals(forgotPasswordPage.getErrorMessage().getText(), INVALID_EMAIL);
-////        } else if (forgotPasswordPage.getErrorMessage().getText().contains("There is no account")) {
-//            Assert.assertEquals(forgotPasswordPage.getErrorMessage().getText(), NO_ACCOUNT_REGISTERED_ON_THIS_EMAIL);
-////        } else if (!forgotPasswordPage.getConfirmationMessage().) {
-//            Assert.assertEquals(forgotPasswordPage.getConfirmationMessage().getText(), EMAIL_HAS_BEEN_SENT);
-//            Assert.assertEquals(TEST.);
-//        } else {
-//            Assert.fail("Assertion failed");
-//        }
-//
-//    }
 
 }
