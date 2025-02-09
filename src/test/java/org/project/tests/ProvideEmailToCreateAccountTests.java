@@ -75,7 +75,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
         navigationBarPage.navigationBarUserSignIn();
-        projectHelper.webDriverWait().until(ExpectedConditions.visibilityOf(loginPage.getEmailField()));
+        projectHelper.waitCoupleTimesForElement(loginPage.getEmailField());
         loginPage.sendEmailAdressField(readProperties.readValue("unregisteredEmail"));
         loginPage.clickCreateAnAccountButton();
         WebElement el = driver.findElement(By.xpath("//div[@class='account_creation']//h3"));

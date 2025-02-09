@@ -1,6 +1,8 @@
 package org.project.helper;
 
 
+import org.openqa.selenium.InvalidElementStateException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -23,6 +25,24 @@ public class ProjectHelper extends BasePage {
 
     public void waitForElement(WebElement element) {
         webDriverWait().until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    public void waitCoupleTimesForElement(WebElement element) {
+        int attempt = 1;
+        int sumAttempts = 5;
+        while (attempt < sumAttempts) {
+            try {
+                attempt ++;
+                webDriverWait().until(ExpectedConditions.visibilityOf(element));
+                webDriverWait().until(ExpectedConditions.elementToBeClickable(element));
+                element.click();
+                break;
+            } catch (NullPointerException | NoSuchElementException | InvalidElementStateException e){
+                if (attempt == sumAttempts) {
+                    throw e;
+                }
+            }
+        }
     }
 
     public Actions actions(WebDriver driver) {
