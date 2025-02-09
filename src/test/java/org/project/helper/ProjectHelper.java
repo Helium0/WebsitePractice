@@ -35,6 +35,7 @@ public class ProjectHelper extends BasePage {
                 element.click();
                 break;
             } catch (NullPointerException | NoSuchElementException | InvalidElementStateException | TimeoutException e){
+                element.click();
                 if (attempt == sumAttempts) {
                     throw e;
                 }
