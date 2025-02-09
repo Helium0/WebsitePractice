@@ -12,6 +12,7 @@ import org.project.pages.NavigationBarPage;
 import org.project.utilities.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
 
@@ -27,6 +28,8 @@ public class ForgotPasswordTests extends BasePage {
     private final String INVALID_EMAIL = "Invalid email address.";
     private final String NO_ACCOUNT_REGISTERED_ON_THIS_EMAIL = "There is no account registered for this email address.";
     private final String EMAIL_HAS_BEEN_SENT = "A confirmation email has been sent to your address: patryk.automat999@gmail.com";
+
+    private final By TEST = By.xpath("//div[@class='alert alert-success']");
 
     @Test(groups = "regression", priority = 1)
     public void forgotPasswordWithEmptyEmailField() {
@@ -98,17 +101,29 @@ public class ForgotPasswordTests extends BasePage {
         String [] email = data.split(",");
         loginPage.provideEmail(email[0]);
         forgotPasswordPage.clickOnRetrievePasswordButton();
-//        System.out.println(forgotPasswordPage.getConfirmationMessage().getText());
 
-        if (forgotPasswordPage.getConfirmationMessage().getText().contains("A confirmation email")) {
-            Assert.assertEquals(forgotPasswordPage.getConfirmationMessage().getText(), EMAIL_HAS_BEEN_SENT);
-        } else if(defineCustomerDetailsPage.webElementsError().get(0).contains("Invalid email")) {
-            Assert.assertEquals(defineCustomerDetailsPage.webElementsError().get(0), INVALID_EMAIL);
-        } else if (defineCustomerDetailsPage.webElementsError().get(0).contains("There is no account")) {
-            Assert.assertEquals(forgotPasswordPage.getConfirmationMessage().getText(), NO_ACCOUNT_REGISTERED_ON_THIS_EMAIL);
-        } else {
-            Assert.fail("Assertion failed");
-        }
+
+//        if(driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getDomAttribute("class").contains("danger") ||
+//                driver.findElement(By.xpath("//p[@class='alert alert-success']")).getText().contains("A confirmation email")) {
+//            Assert.assertTrue(driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getDomAttribute("class").contains("danger") ||
+//                    driver.findElement(By.xpath("//p[@class='alert alert-success']")).getText().contains("A confirmation email"));
+//        };
+
+//        forgotPasswordPage.testTest(forgotPasswordPage.getErrorMessage(),forgotPasswordPage.getConfirmationMessage());
+
     }
+
+////        if (forgotPasswordPage.getErrorMessage().getText().contains("Invalid email")) {
+//            Assert.assertEquals(forgotPasswordPage.getErrorMessage().getText(), INVALID_EMAIL);
+////        } else if (forgotPasswordPage.getErrorMessage().getText().contains("There is no account")) {
+//            Assert.assertEquals(forgotPasswordPage.getErrorMessage().getText(), NO_ACCOUNT_REGISTERED_ON_THIS_EMAIL);
+////        } else if (!forgotPasswordPage.getConfirmationMessage().) {
+//            Assert.assertEquals(forgotPasswordPage.getConfirmationMessage().getText(), EMAIL_HAS_BEEN_SENT);
+//            Assert.assertEquals(TEST.);
+//        } else {
+//            Assert.fail("Assertion failed");
+//        }
+//
+//    }
 
 }

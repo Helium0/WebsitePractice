@@ -58,11 +58,12 @@ public class DefineCustomerAdressTests extends BasePage {
         } else {
             Assert.fail("*** Assertion failed ***");
         }
+
         navigationBarPage.signOutFromNavigationBar();
 
     }
 
-    @Test(dependsOnMethods = "fillCustomerFirstAddress")
+    @Test(dependsOnMethods = "fillCustomerFirstAddress",groups = "functional")
     public void deleteFilledCustomerAddress() throws IOException {
         loginPage = new LoginPage(driver);
         defineCustomerAdressPage = new DefineCustomerAdressPage(driver);
