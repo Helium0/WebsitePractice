@@ -3,8 +3,10 @@ package org.project.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.project.BasePage;
 import org.project.helper.DataProv;
+import org.project.helper.ProjectHelper;
 import org.project.pages.DefineCustomerDetailsPage;
 import org.project.pages.LoginPage;
 import org.project.pages.NavigationBarPage;
@@ -23,6 +25,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
     private LoginTests loginTests;
     private NavigationBarPage navigationBarPage;
     private DefineCustomerDetailsPage defineCustomerDetailsPage;
+    private ProjectHelper projectHelper;
     private final String ALREADY_REGISTERED_EMAIL = "An account using this email address has already been registered. Please enter a valid password or request a new one.";
     private final String PERSONAL_INFORMATION = "YOUR PERSONAL INFORMATION";
 
@@ -66,11 +69,13 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
     }
 
     @Test(groups = "functional")
-    public void validEmailAdress() throws IOException {
+    public void validEmailAddress() throws IOException {
         readProperties = new ReadProperties();
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
+        projectHelper = new ProjectHelper();
         navigationBarPage.navigationBarUserSignIn();
+        projectHelper.webDriverWait().until(ExpectedConditions.visibilityOf(loginPage.getEmailField()));
         loginPage.sendEmailAdressField(readProperties.readValue("unregisteredEmail"));
         loginPage.clickCreateAnAccountButton();
         WebElement el = driver.findElement(By.xpath("//div[@class='account_creation']//h3"));
