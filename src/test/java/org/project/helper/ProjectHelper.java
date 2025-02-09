@@ -30,12 +30,12 @@ public class ProjectHelper extends BasePage {
         while (attempt < sumAttempts) {
             try {
                 attempt ++;
+                webDriverWait().until(ExpectedConditions.presenceOfElementLocated(locator));
                 webDriverWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
                 webDriverWait().until(ExpectedConditions.elementToBeClickable(element));
                 element.click();
                 break;
-            } catch (NullPointerException | NoSuchElementException | InvalidElementStateException | TimeoutException e){
-                element.click();
+            } catch ( TimeoutException e){
                 if (attempt == sumAttempts) {
                     throw e;
                 }
