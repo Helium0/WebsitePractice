@@ -17,7 +17,7 @@ public class ProjectHelper extends BasePage {
 
 
     public WebDriverWait webDriverWait() {
-        return new WebDriverWait(driver,Duration.ofSeconds(10));
+        return new WebDriverWait(driver,Duration.ofSeconds(20));
     }
 
     public void waitForElement(WebElement element) {
@@ -30,6 +30,7 @@ public class ProjectHelper extends BasePage {
         while (attempt < sumAttempts) {
             try {
                 attempt ++;
+                webDriverWait().until(webDriver -> ((JavascriptExecutor)webDriver).executeScript("return document.readyState").equals("complete"));
                 webDriverWait().until(ExpectedConditions.presenceOfElementLocated(locator));
                 webDriverWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
                 webDriverWait().until(ExpectedConditions.elementToBeClickable(element));
