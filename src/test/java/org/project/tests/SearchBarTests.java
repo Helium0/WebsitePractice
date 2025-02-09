@@ -57,7 +57,7 @@ public class SearchBarTests extends BasePage {
     }
 
     @Test(groups = "functional", priority = 2)
-    public void invalidSearchNoResults() {
+    public void invalidSearchNoResults() throws InterruptedException {
         searchBarPage = new SearchBarPage(driver);
         projectHelper = new ProjectHelper();
         projectHelper.actions(driver).click(searchBarPage.setSearchBarInput())
@@ -69,6 +69,13 @@ public class SearchBarTests extends BasePage {
         List<ProductComponent> boots = searchBarPage.getAllDisplayedProducts();
 
         Assert.assertEquals(boots.size(),0);
+        projectHelper.actions(driver).click(searchBarPage.setSearchBarInput())
+                .keyDown(Keys.CONTROL).sendKeys("A")
+                .keyUp(Keys.CONTROL)
+                .keyDown(Keys.BACK_SPACE)
+                .keyUp(Keys.BACK_SPACE)
+                .perform();
+
     }
 
 }
