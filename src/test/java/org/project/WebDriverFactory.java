@@ -2,6 +2,7 @@ package org.project;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -19,5 +20,9 @@ public class WebDriverFactory {
             default:
                 throw new RuntimeException("Incorrect browser: "+browser);
         }
+    }
+
+    public ChromeOptions chromeOptions() {
+        return chromeOptions().addArguments("--disable-gpu");
     }
 }

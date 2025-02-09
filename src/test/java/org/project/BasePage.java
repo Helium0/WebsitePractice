@@ -14,6 +14,7 @@ public class BasePage extends WebDriverFactory {
     @BeforeGroups({"functional", "regression", "smoke"})
     public void getWebPage() {
         WebDriverFactory webDriverFactory = new WebDriverFactory();
+        webDriverFactory.chromeOptions();
         if (driver == null) {
             driver = webDriverFactory.getCorrectBrowser("Chrome");
             driver.get("http://www.automationpractice.pl/index.php");
