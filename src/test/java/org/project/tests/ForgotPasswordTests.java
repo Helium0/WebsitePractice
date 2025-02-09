@@ -107,6 +107,7 @@ public class ForgotPasswordTests extends BasePage {
         } else {
             Assert.fail("*** Assertion Failed ***");
         }
+        forgotPasswordPage.clickOnBackToLoginButton();
 
     }
 
