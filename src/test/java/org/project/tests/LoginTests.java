@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.project.BasePage;
 import org.project.helper.DataProv;
+import org.project.helper.ProjectHelper;
 import org.project.pages.DefineCustomerDetailsPage;
 import org.project.pages.LoginPage;
 import org.project.pages.NavigationBarPage;
@@ -21,6 +22,7 @@ public class LoginTests extends BasePage {
     private LoginPage loginPage;
     private DefineCustomerDetailsPage defineCustomerDetailsPage;
     private NavigationBarPage navigationBarPage;
+    private ProjectHelper projectHelper;
 
     // Error texts from login page. Used for assertions.
     private final String EMAIL_REQUIRED = "An email address required.";
@@ -47,7 +49,9 @@ public class LoginTests extends BasePage {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+        projectHelper = new ProjectHelper();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+//        navigationBarPage.navigationBarUserSignIn();
         String [] users = data.split(",");
         loginPage.loginUser(users[0],users[1]);
         loginPage.clickSubmitLoginButton();
@@ -73,7 +77,9 @@ public class LoginTests extends BasePage {
         loginPage = new LoginPage(driver);
         readProperties = new ReadProperties();
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+        projectHelper = new ProjectHelper();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+//        navigationBarPage.navigationBarUserSignIn();
         loginPage.loginUser(readProperties.readValue("wrongEmail"),readProperties.readValue("wrongPassword"));
         loginPage.clickSubmitLoginButton();
         WebElement element = driver.findElement(By.xpath("//li[text()='Authentication failed.']"));
@@ -125,7 +131,9 @@ public class LoginTests extends BasePage {
         loginPage = new LoginPage(driver);
         readProperties = new ReadProperties();
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+        projectHelper = new ProjectHelper();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+//        navigationBarPage.navigationBarUserSignIn();
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         WebElement el = driver.findElement(By.xpath("//p[text()='Welcome to your account. Here you can manage all of your personal information and orders.']"));

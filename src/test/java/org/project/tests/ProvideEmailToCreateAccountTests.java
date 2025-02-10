@@ -35,7 +35,9 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         loginPage = new LoginPage(driver);
         loginTests = new LoginTests();
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+        projectHelper = new ProjectHelper();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+//        navigationBarPage.navigationBarUserSignIn();
         loginPage.clickCreateAnAccountButton();
 
         Assert.assertEquals(loginTests.getINVALID_EMAIL(),"Invalid email address.");
@@ -47,7 +49,9 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         loginPage = new LoginPage(driver);
         loginTests = new LoginTests();
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper = new ProjectHelper();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
         loginPage.sendEmailAdressField(readProperties.readValue("numberEmail"));
         loginPage.clickCreateAnAccountButton();
 
@@ -61,7 +65,9 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         loginPage = new LoginPage(driver);
         loginTests = new LoginTests();
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+        projectHelper = new ProjectHelper();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+//        navigationBarPage.navigationBarUserSignIn();
         loginPage.sendEmailAdressField(readProperties.readValue("registeredEmail"));
         loginPage.clickCreateAnAccountButton();
 
@@ -74,7 +80,9 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-        navigationBarPage.navigationBarUserSignIn();
+//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper = new ProjectHelper();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
         projectHelper.waitCoupleTimesForElement(loginPage.getEMAIL_LOCATOR());
         loginPage.sendEmailAdressField(readProperties.readValue("unregisteredEmail"));
         loginPage.clickCreateAnAccountButton();
@@ -87,9 +95,10 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
     public void differentEmailVariations(String email) throws InterruptedException {
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         loginTests = new LoginTests();
+//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
         String[] userEmail = email.split(",");
         loginPage.sendEmailAdressField(userEmail[0]);
         loginPage.clickCreateAnAccountButton();

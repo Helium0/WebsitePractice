@@ -2,6 +2,7 @@ package org.project.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.project.BasePage;
 import org.project.helper.CustomerHelper;
 import org.project.helper.ProjectHelper;
@@ -43,9 +44,11 @@ public class DefineCustomerAdressTests extends BasePage {
         readProperties = new ReadProperties();
         customerHelper = new CustomerHelper();
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
+        projectHelper.waitCoupleTimesForElement(defineCustomerAdressPage.ccc());
         defineCustomerAdressPage.clickOnAddCustomerFirstAddress();
         defineCustomerAdressPage.fillCustomerFullAddress(customerHelper.customerObject());
         defineCustomerAdressPage.assignCustomerAddressInput(CUSTOMER_FUTURE_REFERENCE_ADDRESS);
@@ -95,7 +98,8 @@ public class DefineCustomerAdressTests extends BasePage {
         customerHelper = new CustomerHelper();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         defineCustomerAdressPage.clickOnAddCustomerFirstAddress();
@@ -122,7 +126,8 @@ public class DefineCustomerAdressTests extends BasePage {
         customerHelper = new CustomerHelper();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         defineCustomerAdressPage.clickOnAddCustomerFirstAddress();
@@ -149,7 +154,8 @@ public class DefineCustomerAdressTests extends BasePage {
         customerHelper = new CustomerHelper();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         defineCustomerAdressPage.clickOnAddCustomerFirstAddress();
@@ -175,7 +181,8 @@ public class DefineCustomerAdressTests extends BasePage {
         customerHelper = new CustomerHelper();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         defineCustomerAdressPage.clickOnAddCustomerFirstAddress();
@@ -200,7 +207,8 @@ public class DefineCustomerAdressTests extends BasePage {
         customerHelper = new CustomerHelper();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         defineCustomerAdressPage.clickOnAddCustomerFirstAddress();
@@ -225,7 +233,8 @@ public class DefineCustomerAdressTests extends BasePage {
         customerHelper = new CustomerHelper();
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
-        navigationBarPage.navigationBarUserSignIn();
+//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         defineCustomerAdressPage.clickOnAddCustomerFirstAddress();
