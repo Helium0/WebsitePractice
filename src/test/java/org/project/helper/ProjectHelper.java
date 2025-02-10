@@ -33,9 +33,11 @@ public class ProjectHelper extends BasePage {
                 new WebDriverWait(driver, Duration.ofSeconds(15)).until(webDriver -> ((JavascriptExecutor)webDriver)
                         .executeScript("return document.readyState").equals("complete"));
                 WebElement el = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(locator));
+                JavascriptExecutor js = (JavascriptExecutor) driver;
                 new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfElementLocated(locator));
                 new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(locator));
-                actions(driver).click(el).perform();
+//                actions(driver).click(el).perform();
+                js.executeScript("arguments[0].click();",el);
                 break;
             } catch ( TimeoutException e){
                 if (attempt == sumAttempts) {
