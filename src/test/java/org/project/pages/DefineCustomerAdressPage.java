@@ -1,5 +1,6 @@
 package org.project.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,12 +36,16 @@ public class DefineCustomerAdressPage {
     private WebElement deleteCustomerAddressButton;
 
 
+    private final By CUSTOMER_FIRST_ADDRESS_BUTTON = By.xpath("//span[text()='Add my first address']");
 
     public DefineCustomerAdressPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
 
     }
 
+    public By ccc() {
+        return CUSTOMER_FIRST_ADDRESS_BUTTON;
+    }
 
     public void clickOnAddCustomerFirstAddress() {
         customerFirstAdressButton.click();

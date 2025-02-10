@@ -1,5 +1,6 @@
 package org.project.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,10 +16,15 @@ public class NavigationBarPage {
     private WebElement navigationBarSignIn;
 
 
+    private final By USER_LOGIN = By.cssSelector(".login");
 
     public NavigationBarPage(WebDriver driver) {
         PageFactory.initElements(driver,this);
 
+    }
+
+    public By getUSER_LOGIN() {
+        return USER_LOGIN;
     }
 
     public void navigationBarUserSignIn() {
