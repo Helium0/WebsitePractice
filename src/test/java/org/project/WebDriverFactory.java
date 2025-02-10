@@ -23,6 +23,8 @@ public class WebDriverFactory {
     }
 
     public ChromeOptions chromeOptions() {
-        return chromeOptions().addArguments("--disable-gpu");
+        ChromeOptions options =new ChromeOptions();
+        options.addArguments("--disable-gpu");
+        return options;
     }
 }
