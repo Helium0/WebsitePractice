@@ -3,9 +3,7 @@ package org.project.helper;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.project.BasePage;
 import org.testng.asserts.SoftAssert;
 import java.time.Duration;
@@ -61,6 +59,13 @@ public class ProjectHelper extends BasePage {
 
     public List<WebElement> streamMethod(WebElement element) {
         return select(element).getOptions();
+    }
+
+    public Wait fluentWait() {
+        return new FluentWait<>(driver)
+               .withTimeout(Duration.ofSeconds(15))
+               .pollingEvery(Duration.ofMillis(500))
+               .ignoring(NoSuchElementException.class);
     }
 
 }
