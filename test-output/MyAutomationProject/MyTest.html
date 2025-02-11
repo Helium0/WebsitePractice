@@ -1,0 +1,395 @@
+<html>
+<head>
+<title>TestNG:  MyTest</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>MyTest</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>63/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Feb 11 21:59:16 CET 2025</td>
+</tr>
+<tr><td>Total time:</td><td>167 seconds (167519 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td>functional weeklyWorkout regression smoke </td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='org.project.tests.ProvideEmailToCreateAccountTests.registerOnExistingEmail()'><b>registerOnExistingEmail</b><br>Test class: org.project.tests.ProvideEmailToCreateAccountTests</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.ProvideEmailToCreateAccountTests@67a20f67</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerDetailsTests.createAccountWithoutFirstNameAndLastName()'><b>createAccountWithoutFirstNameAndLastName</b><br>Test class: org.project.tests.DefineCustomerDetailsTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.DefineCustomerDetailsTests@3daa422a</td></tr>
+<tr>
+<td title='org.project.tests.ForgotPasswordTests.differentEmailsFromDataProvider()'><b>differentEmailsFromDataProvider</b><br>Test class: org.project.tests.ForgotPasswordTests<br>Parameters: 1290948472, .......!</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.ForgotPasswordTests@72f926e6</td></tr>
+<tr>
+<td title='org.project.tests.ProvideEmailToCreateAccountTests.validEmailAddress()'><b>validEmailAddress</b><br>Test class: org.project.tests.ProvideEmailToCreateAccountTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.ProvideEmailToCreateAccountTests@67a20f67</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerDetailsTests.createAccountWithoutLastName()'><b>createAccountWithoutLastName</b><br>Test class: org.project.tests.DefineCustomerDetailsTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.DefineCustomerDetailsTests@3daa422a</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerAdressTests.fillCustomerFirstAddressWithoutPostalCode()'><b>fillCustomerFirstAddressWithoutPostalCode</b><br>Test class: org.project.tests.DefineCustomerAdressTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.DefineCustomerAdressTests@1cbbffcd</td></tr>
+<tr>
+<td title='org.project.tests.ForgotPasswordTests.differentEmailsFromDataProvider()'><b>differentEmailsFromDataProvider</b><br>Test class: org.project.tests.ForgotPasswordTests<br>Parameters: patryk.automat999@gmail.com, elo</td>
+<td></td>
+<td>25</td>
+<td>org.project.tests.ForgotPasswordTests@72f926e6</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginsWithDataProvider()'><b>loginsWithDataProvider</b><br>Test class: org.project.tests.LoginTests<br>Parameters: patryk666@gmail.com, testerToJa</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+<tr>
+<td title='org.project.tests.ProvideEmailToCreateAccountTests.differentEmailVariations()'><b>differentEmailVariations</b><br>Test class: org.project.tests.ProvideEmailToCreateAccountTests<br>Parameters: patryk.automat999@gmail.com, elo</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.ProvideEmailToCreateAccountTests@67a20f67</td></tr>
+<tr>
+<td title='org.project.tests.ForgotPasswordTests.differentEmailsFromDataProvider()'><b>differentEmailsFromDataProvider</b><br>Test class: org.project.tests.ForgotPasswordTests<br>Parameters: p, test</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.ForgotPasswordTests@72f926e6</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerAdressTests.fillCustomerFirstAddressWithoutRequiredFields()'><b>fillCustomerFirstAddressWithoutRequiredFields</b><br>Test class: org.project.tests.DefineCustomerAdressTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.DefineCustomerAdressTests@1cbbffcd</td></tr>
+<tr>
+<td title='org.project.tests.UpdateCustomerDetailsTests.updateCustomerDetailsWhenClearedFirstName()'><b>updateCustomerDetailsWhenClearedFirstName</b><br>Test class: org.project.tests.UpdateCustomerDetailsTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.UpdateCustomerDetailsTests@31c88ec8</td></tr>
+<tr>
+<td title='org.project.tests.UpdateCustomerDetailsTests.updateCustomerDetailsWithoutPassword()'><b>updateCustomerDetailsWithoutPassword</b><br>Test class: org.project.tests.UpdateCustomerDetailsTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.UpdateCustomerDetailsTests@31c88ec8</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerDetailsTests.createAccountWithExistedEmail()'><b>createAccountWithExistedEmail</b><br>Test class: org.project.tests.DefineCustomerDetailsTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.DefineCustomerDetailsTests@3daa422a</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerDetailsTests.createAccountWithoutAnyPersonalInformation()'><b>createAccountWithoutAnyPersonalInformation</b><br>Test class: org.project.tests.DefineCustomerDetailsTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.DefineCustomerDetailsTests@3daa422a</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerAdressTests.fillCustomerFirstAddressWithoutCity()'><b>fillCustomerFirstAddressWithoutCity</b><br>Test class: org.project.tests.DefineCustomerAdressTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.DefineCustomerAdressTests@1cbbffcd</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerAdressTests.fillCustomerFirstAddressWithoutMobilePhone()'><b>fillCustomerFirstAddressWithoutMobilePhone</b><br>Test class: org.project.tests.DefineCustomerAdressTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.DefineCustomerAdressTests@1cbbffcd</td></tr>
+<tr>
+<td title='org.project.tests.ProvideEmailToCreateAccountTests.differentEmailVariations()'><b>differentEmailVariations</b><br>Test class: org.project.tests.ProvideEmailToCreateAccountTests<br>Parameters: patryk666@gmail.com, testerToJa</td>
+<td></td>
+<td>10</td>
+<td>org.project.tests.ProvideEmailToCreateAccountTests@67a20f67</td></tr>
+<tr>
+<td title='org.project.tests.ForgotPasswordTests.forgotPasswordWithValidEmail()'><b>forgotPasswordWithValidEmail</b><br>Test class: org.project.tests.ForgotPasswordTests</td>
+<td></td>
+<td>5</td>
+<td>org.project.tests.ForgotPasswordTests@72f926e6</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerAdressTests.fillCustomerFirstAddressWithoutAddress()'><b>fillCustomerFirstAddressWithoutAddress</b><br>Test class: org.project.tests.DefineCustomerAdressTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.DefineCustomerAdressTests@1cbbffcd</td></tr>
+<tr>
+<td title='org.project.tests.UpdateCustomerDetailsTests.revertCustomerSurname()'><b>revertCustomerSurname</b><br>Test class: org.project.tests.UpdateCustomerDetailsTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.UpdateCustomerDetailsTests@31c88ec8</td></tr>
+<tr>
+<td title='org.project.tests.ProvideEmailToCreateAccountTests.numberAsEmailAdress()'><b>numberAsEmailAdress</b><br>Test class: org.project.tests.ProvideEmailToCreateAccountTests</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.ProvideEmailToCreateAccountTests@67a20f67</td></tr>
+<tr>
+<td title='org.project.tests.SearchBarTests.invalidSearchNoResults()'><b>invalidSearchNoResults</b><br>Test class: org.project.tests.SearchBarTests</td>
+<td></td>
+<td>10</td>
+<td>org.project.tests.SearchBarTests@27ce24aa</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerAdressTests.fillCustomerFirstAddressWithoutCountryState()'><b>fillCustomerFirstAddressWithoutCountryState</b><br>Test class: org.project.tests.DefineCustomerAdressTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.DefineCustomerAdressTests@1cbbffcd</td></tr>
+<tr>
+<td title='org.project.tests.UpdateCustomerDetailsTests.updateCustomerDetailsWhenClearedFirstNameAndLastName()'><b>updateCustomerDetailsWhenClearedFirstNameAndLastName</b><br>Test class: org.project.tests.UpdateCustomerDetailsTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.UpdateCustomerDetailsTests@31c88ec8</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginsWithDataProvider()'><b>loginsWithDataProvider</b><br>Test class: org.project.tests.LoginTests<br>Parameters: patTest,  </td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+<tr>
+<td title='org.project.tests.ForgotPasswordTests.differentEmailsFromDataProvider()'><b>differentEmailsFromDataProvider</b><br>Test class: org.project.tests.ForgotPasswordTests<br>Parameters: patTest,  </td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.ForgotPasswordTests@72f926e6</td></tr>
+<tr>
+<td title='org.project.tests.ProvideEmailToCreateAccountTests.differentEmailVariations()'><b>differentEmailVariations</b><br>Test class: org.project.tests.ProvideEmailToCreateAccountTests<br>Parameters: 1290948472, .......!</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.ProvideEmailToCreateAccountTests@67a20f67</td></tr>
+<tr>
+<td title='org.project.tests.ProvideEmailToCreateAccountTests.differentEmailVariations()'><b>differentEmailVariations</b><br>Test class: org.project.tests.ProvideEmailToCreateAccountTests<br>Parameters: zbychu12@gmail.com, test2015</td>
+<td></td>
+<td>10</td>
+<td>org.project.tests.ProvideEmailToCreateAccountTests@67a20f67</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginsWithDataProvider()'><b>loginsWithDataProvider</b><br>Test class: org.project.tests.LoginTests<br>Parameters: zbychu12@gmail.com, test2015</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginsWithDataProvider()'><b>loginsWithDataProvider</b><br>Test class: org.project.tests.LoginTests<br>Parameters: p, test</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+<tr>
+<td title='org.project.tests.ProductTests.changeProductQuantityByButtonAndAddToTheCart()'><b>changeProductQuantityByButtonAndAddToTheCart</b><br>Test class: org.project.tests.ProductTests</td>
+<td></td>
+<td>3</td>
+<td>org.project.tests.ProductTests@481a996b</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginToAccountWithInvalidData()'><b>loginToAccountWithInvalidData</b><br>Test class: org.project.tests.LoginTests</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+<tr>
+<td title='org.project.tests.ProductTests.changeProductQuantityAndAddToTheCart()'><b>changeProductQuantityAndAddToTheCart</b><br>Test class: org.project.tests.ProductTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.ProductTests@481a996b</td></tr>
+<tr>
+<td title='org.project.tests.ProvideEmailToCreateAccountTests.emptyEmailAdress()'><b>emptyEmailAdress</b><br>Test class: org.project.tests.ProvideEmailToCreateAccountTests</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.ProvideEmailToCreateAccountTests@67a20f67</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerDetailsTests.createAccountWithoutFirstNameAndPassword()'><b>createAccountWithoutFirstNameAndPassword</b><br>Test class: org.project.tests.DefineCustomerDetailsTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.DefineCustomerDetailsTests@3daa422a</td></tr>
+<tr>
+<td title='org.project.tests.SearchBarTests.searchBarExactMatch()'><b>searchBarExactMatch</b><br>Test class: org.project.tests.SearchBarTests</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.SearchBarTests@27ce24aa</td></tr>
+<tr>
+<td title='org.project.tests.ProvideEmailToCreateAccountTests.differentEmailVariations()'><b>differentEmailVariations</b><br>Test class: org.project.tests.ProvideEmailToCreateAccountTests<br>Parameters: patTest,  </td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.ProvideEmailToCreateAccountTests@67a20f67</td></tr>
+<tr>
+<td title='org.project.tests.UpdateCustomerDetailsTests.backToHomePage()'><b>backToHomePage</b><br>Test class: org.project.tests.UpdateCustomerDetailsTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.UpdateCustomerDetailsTests@31c88ec8</td></tr>
+<tr>
+<td title='org.project.tests.ForgotPasswordTests.forgotPasswordWithEmptyEmailField()'><b>forgotPasswordWithEmptyEmailField</b><br>Test class: org.project.tests.ForgotPasswordTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.ForgotPasswordTests@72f926e6</td></tr>
+<tr>
+<td title='org.project.tests.UpdateCustomerDetailsTests.updateUserFirstName()'><b>updateUserFirstName</b><br>Test class: org.project.tests.UpdateCustomerDetailsTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.UpdateCustomerDetailsTests@31c88ec8</td></tr>
+<tr>
+<td title='org.project.tests.ForgotPasswordTests.forgotPasswordBackToLoginPage()'><b>forgotPasswordBackToLoginPage</b><br>Test class: org.project.tests.ForgotPasswordTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.ForgotPasswordTests@72f926e6</td></tr>
+<tr>
+<td title='org.project.tests.UpdateCustomerDetailsTests.updateCustomerDetailsWithWrongPassword()'><b>updateCustomerDetailsWithWrongPassword</b><br>Test class: org.project.tests.UpdateCustomerDetailsTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.UpdateCustomerDetailsTests@31c88ec8</td></tr>
+<tr>
+<td title='org.project.tests.UpdateCustomerDetailsTests.backToCustomerAccountDetails()'><b>backToCustomerAccountDetails</b><br>Test class: org.project.tests.UpdateCustomerDetailsTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.UpdateCustomerDetailsTests@31c88ec8</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerDetailsTests.createAccountFillPersonalInformationWithoutDateBirth()'><b>createAccountFillPersonalInformationWithoutDateBirth</b><br>Test class: org.project.tests.DefineCustomerDetailsTests</td>
+<td></td>
+<td>6</td>
+<td>org.project.tests.DefineCustomerDetailsTests@3daa422a</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginToAccountWithCorrectData()'><b>loginToAccountWithCorrectData</b><br>Test class: org.project.tests.LoginTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+<tr>
+<td title='org.project.tests.UpdateCustomerDetailsTests.updateCustomerDetailsWhenClearedLastName()'><b>updateCustomerDetailsWhenClearedLastName</b><br>Test class: org.project.tests.UpdateCustomerDetailsTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.UpdateCustomerDetailsTests@31c88ec8</td></tr>
+<tr>
+<td title='org.project.tests.SearchBarTests.searchBarPartialMatch()'><b>searchBarPartialMatch</b><br>Test class: org.project.tests.SearchBarTests</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.SearchBarTests@27ce24aa</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginsWithDataProvider()'><b>loginsWithDataProvider</b><br>Test class: org.project.tests.LoginTests<br>Parameters: patryk.automat999@gmail.com, elo</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerDetailsTests.createAccountWithoutPassword()'><b>createAccountWithoutPassword</b><br>Test class: org.project.tests.DefineCustomerDetailsTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.DefineCustomerDetailsTests@3daa422a</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerAdressTests.fillCustomerFirstAddress()'><b>fillCustomerFirstAddress</b><br>Test class: org.project.tests.DefineCustomerAdressTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.DefineCustomerAdressTests@1cbbffcd</td></tr>
+<tr>
+<td title='org.project.tests.ForgotPasswordTests.forgotPasswordWithInvalidEmail()'><b>forgotPasswordWithInvalidEmail</b><br>Test class: org.project.tests.ForgotPasswordTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.ForgotPasswordTests@72f926e6</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginToAccountWithoutPassword()'><b>loginToAccountWithoutPassword</b><br>Test class: org.project.tests.LoginTests</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerAdressTests.deleteFilledCustomerAddress()'><b>deleteFilledCustomerAddress</b><br>Test class: org.project.tests.DefineCustomerAdressTests</td>
+<td></td>
+<td>2</td>
+<td>org.project.tests.DefineCustomerAdressTests@1cbbffcd</td></tr>
+<tr>
+<td title='org.project.tests.ProductTests.addProductToTheCart()'><b>addProductToTheCart</b><br>Test class: org.project.tests.ProductTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.ProductTests@481a996b</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginToAccountWithoutEmail()'><b>loginToAccountWithoutEmail</b><br>Test class: org.project.tests.LoginTests</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+<tr>
+<td title='org.project.tests.ForgotPasswordTests.differentEmailsFromDataProvider()'><b>differentEmailsFromDataProvider</b><br>Test class: org.project.tests.ForgotPasswordTests<br>Parameters: patryk666@gmail.com, testerToJa</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.ForgotPasswordTests@72f926e6</td></tr>
+<tr>
+<td title='org.project.tests.ForgotPasswordTests.differentEmailsFromDataProvider()'><b>differentEmailsFromDataProvider</b><br>Test class: org.project.tests.ForgotPasswordTests<br>Parameters: zbychu12@gmail.com, test2015</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.ForgotPasswordTests@72f926e6</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginToAccountWithoutData()'><b>loginToAccountWithoutData</b><br>Test class: org.project.tests.LoginTests</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerDetailsTests.createAccountFillPersonalInformation()'><b>createAccountFillPersonalInformation</b><br>Test class: org.project.tests.DefineCustomerDetailsTests</td>
+<td></td>
+<td>8</td>
+<td>org.project.tests.DefineCustomerDetailsTests@3daa422a</td></tr>
+<tr>
+<td title='org.project.tests.ProvideEmailToCreateAccountTests.differentEmailVariations()'><b>differentEmailVariations</b><br>Test class: org.project.tests.ProvideEmailToCreateAccountTests<br>Parameters: p, test</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.ProvideEmailToCreateAccountTests@67a20f67</td></tr>
+<tr>
+<td title='org.project.tests.DefineCustomerDetailsTests.createAccountWithoutFirstName()'><b>createAccountWithoutFirstName</b><br>Test class: org.project.tests.DefineCustomerDetailsTests</td>
+<td></td>
+<td>1</td>
+<td>org.project.tests.DefineCustomerDetailsTests@3daa422a</td></tr>
+<tr>
+<td title='org.project.tests.LoginTests.loginsWithDataProvider()'><b>loginsWithDataProvider</b><br>Test class: org.project.tests.LoginTests<br>Parameters: 1290948472, .......!</td>
+<td></td>
+<td>0</td>
+<td>org.project.tests.LoginTests@4386f16</td></tr>
+</table><p>
+</body>
+</html>
