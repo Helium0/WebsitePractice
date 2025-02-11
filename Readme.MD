@@ -24,8 +24,8 @@
 All my tests I grouped in to different groups and marked by correct annotations. You can change it if you want and use different approach but remember to
 make changes also in XML file. 
 
-![img_2.png](img_2.png)
-![img_3.png](img_3.png)
+![text](img_2.png)
+![anothertext](img_3.png)
 
 ### Libraries and Design patterns: :shipit:
 > * Faker 
