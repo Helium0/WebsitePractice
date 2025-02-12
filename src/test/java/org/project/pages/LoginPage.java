@@ -41,6 +41,10 @@ public class LoginPage {
         return EMAIL_LOCATOR;
     }
 
+    public WebElement getEmailCreate() {
+        return emailCreate;
+    }
+
     public void clickSignOutButton() {
         signOutButton.click();
     }

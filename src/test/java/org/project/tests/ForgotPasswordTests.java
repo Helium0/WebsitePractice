@@ -28,9 +28,7 @@ public class ForgotPasswordTests extends BasePage {
     private final String CONFIRMATION_EMAIL = "email has been sent";
     private final String INVALID_EMAIL = "Invalid email address.";
     private final String NO_ACCOUNT_REGISTERED_ON_THIS_EMAIL = "There is no account registered for this email address.";
-    private final String EMAIL_HAS_BEEN_SENT = "A confirmation email has been sent to your address: patryk.automat999@gmail.com";
 
-    private final By TEST = By.xpath("//div[@class='alert alert-success']");
 
     @Test(groups = "regression", priority = 1)
     public void forgotPasswordWithEmptyEmailField() {
@@ -39,8 +37,7 @@ public class ForgotPasswordTests extends BasePage {
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.clickForgotPasswordButton();
         forgotPasswordPage.clickOnRetrievePasswordButton();
 
@@ -56,8 +53,7 @@ public class ForgotPasswordTests extends BasePage {
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.clickForgotPasswordButton();
         loginPage.provideEmail(readProperties.readValue("wrongEmail"));
         forgotPasswordPage.clickOnRetrievePasswordButton();
@@ -72,8 +68,7 @@ public class ForgotPasswordTests extends BasePage {
         readProperties = new ReadProperties();
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.clickForgotPasswordButton();
         loginPage.provideEmail(readProperties.readValue("validEmail"));
         forgotPasswordPage.clickOnRetrievePasswordButton();
@@ -89,8 +84,7 @@ public class ForgotPasswordTests extends BasePage {
         forgotPasswordPage = new ForgotPasswordPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.clickForgotPasswordButton();
         forgotPasswordPage.clickOnRetrievePasswordButton();
         forgotPasswordPage.clickOnBackToLoginButton();
@@ -106,8 +100,7 @@ public class ForgotPasswordTests extends BasePage {
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.clickForgotPasswordButton();
         String [] email = data.split(",");
         loginPage.provideEmail(email[0]);

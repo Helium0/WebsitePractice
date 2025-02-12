@@ -34,8 +34,7 @@ public class ProductTests extends BasePage {
         searchBarTests = new SearchBarTests();
         projectHelper = new ProjectHelper();
         productPage.waitForElementsToAppear(searchBarPage.setSearchBarInput(), searchBarTests.getPRINTED_DRESS(),
-                searchBarPage.searchBarClick(),projectHelper.webDriverWait(),
-                searchBarPage.products(),driver);
+                searchBarPage.searchBarClick(), projectHelper.jsExecutor(), projectHelper.actions(driver));
         ProductComponent product = searchBarPage.getDisplayedProduct(a -> a.getProductName()
                 .equals(searchBarTests.getPRINTED_DRESS()));
         product.getProduct();
@@ -63,8 +62,7 @@ public class ProductTests extends BasePage {
         searchBarTests = new SearchBarTests();
         projectHelper = new ProjectHelper();
         productPage.waitForElementsToAppear(searchBarPage.setSearchBarInput(), searchBarTests.getPRINTED_DRESS(),
-                searchBarPage.searchBarClick(),projectHelper.webDriverWait(),
-                searchBarPage.products(),driver);
+                searchBarPage.searchBarClick(), projectHelper.jsExecutor(), projectHelper.actions(driver));
         ProductComponent product = searchBarPage.getDisplayedProduct(a -> a.getProductName()
                 .equals(searchBarTests.getPRINTED_DRESS()));
         product.getProduct();
@@ -92,8 +90,7 @@ public class ProductTests extends BasePage {
         searchBarTests = new SearchBarTests();
         projectHelper = new ProjectHelper();
         productPage.waitForElementsToAppear(searchBarPage.setSearchBarInput(), searchBarTests.getPRINTED_DRESS(),
-                searchBarPage.searchBarClick(),projectHelper.webDriverWait(),
-                searchBarPage.products(),driver);
+                searchBarPage.searchBarClick(), projectHelper.jsExecutor(), projectHelper.actions(driver));
         ProductComponent product = searchBarPage.getDisplayedProduct(a -> a.getProductName()
                 .equals(searchBarTests.getPRINTED_DRESS()));
         product.getProduct();

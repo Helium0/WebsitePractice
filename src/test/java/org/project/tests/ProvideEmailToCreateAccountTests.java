@@ -36,8 +36,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         loginTests = new LoginTests();
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.clickCreateAnAccountButton();
 
         Assert.assertEquals(loginTests.getINVALID_EMAIL(),"Invalid email address.");
@@ -49,9 +48,8 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         loginPage = new LoginPage(driver);
         loginTests = new LoginTests();
         navigationBarPage = new NavigationBarPage(driver);
-//        navigationBarPage.navigationBarUserSignIn();
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(readProperties.readValue("numberEmail"));
         loginPage.clickCreateAnAccountButton();
 
@@ -66,8 +64,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         loginTests = new LoginTests();
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(readProperties.readValue("registeredEmail"));
         loginPage.clickCreateAnAccountButton();
 
@@ -75,19 +72,17 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
     }
 
     @Test(groups = "functional")
-    public void validEmailAddress() throws IOException {
+    public void validEmailAddress() throws IOException, InterruptedException {
         readProperties = new ReadProperties();
         loginPage = new LoginPage(driver);
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-        projectHelper.waitCoupleTimesForElement(loginPage.getEMAIL_LOCATOR());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(readProperties.readValue("unregisteredEmail"));
         loginPage.clickCreateAnAccountButton();
         WebElement el = driver.findElement(By.xpath("//div[@class='account_creation']//h3"));
 
+        projectHelper.webDriverWait().until(ExpectedConditions.textToBePresentInElement(el, PERSONAL_INFORMATION));
         Assert.assertEquals(el.getText(), PERSONAL_INFORMATION);
     }
 
@@ -97,8 +92,7 @@ public class ProvideEmailToCreateAccountTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         loginTests = new LoginTests();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         String[] userEmail = email.split(",");
         loginPage.sendEmailAdressField(userEmail[0]);
         loginPage.clickCreateAnAccountButton();

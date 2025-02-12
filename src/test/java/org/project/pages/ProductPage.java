@@ -83,18 +83,15 @@ public class ProductPage {
     /* Below method is little complicated howeaver I left it like it is. I could separate it in to smaller parts
         or use Action class outside single method but for practice I have done like this :) */
 
-    public void waitForElementsToAppear(WebElement element, String text, WebElement elementTwo, WebDriverWait wait, List<WebElement> elementsList, WebDriver driver) {
+    public void waitForElementsToAppear(WebElement element, String text, WebElement elementTwo, JavascriptExecutor js, Actions actions) {
         int att = 0;
         int sumAtt = 5;
         while (att < sumAtt) {
             try {
                 att++;
-                Actions ac = new Actions(driver);
-                ac.click(element).perform();
-                element.sendKeys(text);
+                js.executeScript("location.reload();");
+                actions.click(element).sendKeys(text).perform();
                 elementTwo.click();
-                wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
-                wait.until(ExpectedConditions.elementToBeClickable(elementTwo));
                 break;
             } catch (StaleElementReferenceException | NoSuchElementException |
                      NullPointerException | InvalidElementStateException ek) {

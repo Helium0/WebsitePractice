@@ -50,8 +50,7 @@ public class LoginTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         defineCustomerDetailsPage = new DefineCustomerDetailsPage(driver);
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         String [] users = data.split(",");
         loginPage.loginUser(users[0],users[1]);
         loginPage.clickSubmitLoginButton();
@@ -78,8 +77,7 @@ public class LoginTests extends BasePage {
         readProperties = new ReadProperties();
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.loginUser(readProperties.readValue("wrongEmail"),readProperties.readValue("wrongPassword"));
         loginPage.clickSubmitLoginButton();
         WebElement element = driver.findElement(By.xpath("//li[text()='Authentication failed.']"));
@@ -132,8 +130,7 @@ public class LoginTests extends BasePage {
         readProperties = new ReadProperties();
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         WebElement el = driver.findElement(By.xpath("//p[text()='Welcome to your account. Here you can manage all of your personal information and orders.']"));

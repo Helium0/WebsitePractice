@@ -49,8 +49,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -76,8 +75,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -99,8 +97,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickRegisterAccountButton();
@@ -118,7 +115,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -137,8 +134,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -156,8 +152,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -175,8 +170,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -195,8 +189,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         customerHelper = new CustomerHelper();
         projectHelper = new ProjectHelper();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
-//        navigationBarPage.navigationBarUserSignIn();
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();
@@ -216,8 +209,7 @@ public class DefineCustomerDetailsTests extends BasePage {
         customerHelper = new CustomerHelper();
         readProperties = new ReadProperties();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.sendEmailAdressField(customerHelper.customerObject().getCustomerEmail());
         loginPage.clickCreateAnAccountButton();
         defineCustomerDetailsPage.clickMaleRadioButton();

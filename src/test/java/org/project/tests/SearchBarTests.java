@@ -26,7 +26,7 @@ public class SearchBarTests extends BasePage {
 
 
     @Test(groups = "functional")
-    public void searchBarExactMatch() {
+    public void searchBarExactMatch() throws InterruptedException {
         searchBarPage = new SearchBarPage(driver);
         projectHelper = new ProjectHelper();
         projectHelper.actions(driver).click(searchBarPage.setSearchBarInput())

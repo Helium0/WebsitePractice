@@ -36,8 +36,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         readProperties = new ReadProperties();
         navigationBarPage = new NavigationBarPage(driver);
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         updateCustomerDetailsPage.clickOnCustomerPersonalInformation();
@@ -78,8 +77,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         updateCustomerDetailsPage = new UpdateCustomerDetailsPage(driver);
         readProperties = new ReadProperties();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         updateCustomerDetailsPage.clickOnCustomerPersonalInformation();
@@ -99,8 +97,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         defineCustomerDetailsTests = new DefineCustomerDetailsTests();
         readProperties = new ReadProperties();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         updateCustomerDetailsPage.clickOnCustomerPersonalInformation();
@@ -121,8 +118,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         defineCustomerDetailsTests = new DefineCustomerDetailsTests();
         readProperties = new ReadProperties();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         updateCustomerDetailsPage.clickOnCustomerPersonalInformation();
@@ -143,8 +139,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         defineCustomerDetailsTests = new DefineCustomerDetailsTests();
         readProperties = new ReadProperties();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         updateCustomerDetailsPage.clickOnCustomerPersonalInformation();
@@ -168,8 +163,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         readProperties = new ReadProperties();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         updateCustomerDetailsPage.clickOnCustomerPersonalInformation();
@@ -188,8 +182,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         readProperties = new ReadProperties();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         updateCustomerDetailsPage.clickOnCustomerPersonalInformation();
@@ -210,8 +203,7 @@ public class UpdateCustomerDetailsTests extends BasePage {
         navigationBarPage = new NavigationBarPage(driver);
         readProperties = new ReadProperties();
         projectHelper = new ProjectHelper();
-//        navigationBarPage.navigationBarUserSignIn();
-        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN());
+        projectHelper.waitCoupleTimesForElement(navigationBarPage.getUSER_LOGIN(), projectHelper.jsExecutor());
         loginPage.loginUser(readProperties.readValue("validEmail"),readProperties.readValue("validPassword"));
         loginPage.clickSubmitLoginButton();
         updateCustomerDetailsPage.clickOnCustomerPersonalInformation();
