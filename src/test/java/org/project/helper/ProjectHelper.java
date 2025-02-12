@@ -22,22 +22,17 @@ public class ProjectHelper extends BasePage {
         webDriverWait().until(ExpectedConditions.invisibilityOf(element));
     }
 
-    public void waitCoupleTimesForElement (By locator) {
+    public void waitCoupleTimesForElement (By locator, JavascriptExecutor js) {
         int attempt = 1;
         int sumAttempts = 9;
         while (attempt < sumAttempts) {
             try {
                 attempt ++;
-                new WebDriverWait(driver, Duration.ofSeconds(15)).until(webDriver -> ((JavascriptExecutor)webDriver)
-                        .executeScript("return document.readyState").equals("complete"));
-                WebElement el = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(locator));
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfElementLocated(locator));
-                new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(locator));
-//                actions(driver).click(el).perform();
+                js.executeScript("location.reload();");
+                WebElement el = webDriverWait().until(ExpectedConditions.presenceOfElementLocated(locator));
                 js.executeScript("arguments[0].click();",el);
                 break;
-            } catch ( TimeoutException e){
+            } catch ( TimeoutException  |  NoSuchElementException e){
                 if (attempt == sumAttempts) {
                     throw e;
                 }
@@ -61,11 +56,9 @@ public class ProjectHelper extends BasePage {
         return select(element).getOptions();
     }
 
-    public Wait fluentWait() {
-        return new FluentWait<>(driver)
-               .withTimeout(Duration.ofSeconds(15))
-               .pollingEvery(Duration.ofMillis(500))
-               .ignoring(NoSuchElementException.class);
+
+    public JavascriptExecutor jsExecutor() {
+        return (JavascriptExecutor) driver;
     }
 
 }
