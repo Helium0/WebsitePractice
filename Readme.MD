@@ -45,4 +45,4 @@ This time for generate a report I used TestNG framework. All what you need to do
 Run --> Edit configurations --> Configure TestNG to read data from XML. When you run tests from testng.xml at the end program will create a catalog named: "test-output" with "index.html" file
 inside. That`s a report.
 ![img.png](img.png)
-![img_1.png](img_1.png)
+![img_1.png](C:\Users\patry\OneDrive\Obrazy\Screenpresso\2025-02-12_00h00_26.png)
