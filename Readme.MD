@@ -9,7 +9,7 @@
 ### Description:
 > Private and personal project where I can practice and explore new things. Code is free and open to use.
 > I am still working on this and my next goals are:
-> * integrate project with Jenkins (my builds are failing so far :collision:) - [x]
+> * integrate project with Jenkins (my builds are failing so far :collision:) ✅
 > * create new pages and tests :sunglasses:
 > * refactore code :fire:
 
@@ -45,7 +45,7 @@ This time for generate a report I used TestNG framework. All what you need to do
 Run --> Edit configurations --> Configure TestNG to read data from XML. When you run tests from testng.xml at the end program will create a catalog named: "test-output" with "index.html" file
 inside. That`s a report.
 ![IntelliJ](img.png)
-![TestNGReport](2025-02-12_00h00_26)
+![TestNGReport](2025-02-12_00h00_26.png)
 
 ### Jenkins
 
