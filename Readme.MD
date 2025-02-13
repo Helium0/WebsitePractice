@@ -46,3 +46,8 @@ Run --> Edit configurations --> Configure TestNG to read data from XML. When you
 inside. That`s a report.
 ![img.png](img.png)
 ![img_1.png](C:\Users\patry\OneDrive\Obrazy\Screenpresso\2025-02-12_00h00_26.png)
+
+### Jenkins
+
+Integrated project with Jenkins and went throught build process:
+![Jenkins](2025-02-13_01h06_26.png)
