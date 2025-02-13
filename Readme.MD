@@ -9,7 +9,7 @@
 ### Description:
 > Private and personal project where I can practice and explore new things. Code is free and open to use.
 > I am still working on this and my next goals are:
-> * integrate project with Jenkins (my builds are failing so far :collision:) ✅
+> * ~~integrate project with Jenkins (my builds are failing so far :collision:)~~ ✅
 > * create new pages and tests :sunglasses:
 > * refactore code :fire:
 
